@@ -1,6 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require("mongoose");
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, "./uploads/");
+    },
+    filename: function(req, file, cb) {
+        cb(null, new Date().toISOString() + file.originalname);
+    }
+});
+
+const upload = multer({storage: storage});
 
 const Coffee = require("../models/Coffee");
 
@@ -13,7 +25,7 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", upload.single("coffeeImage"), (req, res, next) => {
     const coffee = new Coffee({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
