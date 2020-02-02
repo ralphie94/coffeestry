@@ -62,7 +62,7 @@ router.get("/", async (req, res) => {
         });
 });
 
-router.post("/", upload.single("coffeeImage"), (req, res, next) => {
+router.post("/add", upload.single("coffeeImage"), (req, res, next) => {
     const coffee = new Coffee({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
