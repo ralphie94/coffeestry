@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar/Navbar";
 import CreateCoffee from "./components/CreateCoffee/CreateCoffee";
+import CoffeeList from "./components/CoffeeList/CoffeeList";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
       <Router>
         <div className="container">
           <Navbar />
-          <Route path="/" />
+          <Route path="/" exact component={CoffeeList} />
           <Route path="/create" component={CreateCoffee} />
         </div>
       </Router>
