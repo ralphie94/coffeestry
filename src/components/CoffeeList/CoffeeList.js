@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import axios from "axios";
 
 const Coffee = props => (
-    <ul>
-        <li>{props.coffee.name}</li>
-        <li>{props.coffee.file}</li>
-        <li>{props.coffee.description}</li>
-        <li>{props.coffee.price}</li>
-    </ul>
+    <tr>
+      <td>{props.coffee.name}</td>
+      <td>{props.coffee.coffeeImage}</td>
+      <td>{props.coffee.description}</td>
+      <td>{props.coffee.price}</td>
+    </tr>
 )
 
 class CoffeeList extends Component {
@@ -21,29 +21,37 @@ class CoffeeList extends Component {
 
     componentDidMount() {
         axios.get("http://localhost:5000/coffee/")
-            .then(response => {
-                this.setState({ coffee: response.data })
+            .then(coffee => {
+                this.setState({ coffee: coffee.data.coffee })
             })
             .catch((error) => {
                 console.log(error);
             })
     }
 
-    // coffeeList() {
-    //     return this.state.coffee.map(currentCoffee => {
-    //         return <Coffee coffee={currentCoffee} key={currentCoffee._id}/>;
-    //     })
-    // }
+    coffeeList() {
+        return this.state.coffee.map(currentcoffee => {
+            return <Coffee coffee={currentcoffee} key={currentcoffee._id} />;
+        })
+    }
 
     render() {
         return (
             <div>
                 <h1>Coffee</h1>
-                <ul>
-                    <li>
-                        {/* { this.coffeeList() } */}
-                    </li>
-                </ul>
+                <table>
+                <thead className="thead-light">
+                    <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    { this.coffeeList() }
+                    <img id="img" />
+                </tbody>
+                </table>
             </div>
         )
     }

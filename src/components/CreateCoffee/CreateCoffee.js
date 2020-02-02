@@ -45,10 +45,9 @@ class CreateCoffee extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-        const file = document.getElementById("inputGroupFile01").files;
         const formData = new FormData();
 
-        formData.append("img", file[0]);
+        formData.append("file", this.state.files);
 
         const coffee = {
             name: this.state.name,
@@ -59,7 +58,7 @@ class CreateCoffee extends Component {
 
         console.log(coffee);
 
-        axios.post("http://localhost:5000/coffee/add", coffee)
+        axios.post("http://localhost:5000/coffee/add", formData, coffee)
             .then(res => console.log(res.data));  
 
         window.location = "/";
@@ -81,6 +80,7 @@ class CreateCoffee extends Component {
                     <input
                         type="file"
                         id="inputGroupFile01"
+                        onChange={this.onChangeFile}
                     />
                     <label>Description: </label>
                     <input 
