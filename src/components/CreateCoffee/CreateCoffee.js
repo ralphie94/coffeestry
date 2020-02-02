@@ -47,7 +47,10 @@ class CreateCoffee extends Component {
         e.preventDefault();
         const formData = new FormData();
 
-        formData.append("file", this.state.file);
+        formData.append("coffeeImage", this.state.file);
+        formData.append("name", this.state.name);
+        formData.append("description", this.state.description);
+        formData.append("price", this.state.price);
 
         const coffee = {
             name: this.state.name,
@@ -68,7 +71,7 @@ class CreateCoffee extends Component {
         return (
             <div>
                 <h1>Create a new coffee</h1>
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={this.onSubmit} enctype="multipart/form-data">
                     <label>Name: </label>
                     <input 
                         type="text"
@@ -79,7 +82,8 @@ class CreateCoffee extends Component {
                     <label>Picture: </label>
                     <input
                         type="file"
-                        id="inputGroupFile01"
+                        required
+                        name="coffeeImage"
                         onChange={this.onChangeFile}
                     />
                     <label>Description: </label>

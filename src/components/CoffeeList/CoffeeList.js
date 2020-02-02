@@ -43,13 +43,14 @@ class CoffeeList extends Component {
                 <thead className="thead-light">
                     <tr>
                     <th>Name</th>
+                    <th>Coffee Image</th>
                     <th>Description</th>
                     <th>Price</th>
                     </tr>
                 </thead>
                 <tbody>
                     { this.coffeeList() }
-                    <img id="img" />
+                    {this.props.coffeeImage && <img src={this.props.coffeeImage} />}
                 </tbody>
                 </table>
             </div>
