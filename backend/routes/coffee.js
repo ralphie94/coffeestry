@@ -12,17 +12,54 @@ const storage = multer.diskStorage({
     }
 });
 
-const upload = multer({storage: storage});
+const fileFilter = (req, file, cb) => {
+    // reject a file
+    if (file.mimetype === "image/jpeg" || file.mimetype === "image/png" || file.mimetype === "image/jpg") {
+        cb(null, true);
+    } else {
+        cb(null, false);
+    }
+};
+
+const upload = multer({
+    storage: storage, 
+    limits: {
+        fileSize: 1024 * 1024 * 5
+    },
+    fileFilter: fileFilter
+});
 
 const Coffee = require("../models/Coffee");
 
 router.get("/", async (req, res) => {
-    try {
-        const coffee = await Coffee.find({})
-        res.json({ coffee });
-    } catch(err) {
-        res.json(err);
-    }
+    Coffee.find()
+        .select("name description price _id coffeeImage")
+        .exec()
+        .then(docs => {
+            const response = {
+                count: docs.length,
+                coffee: docs.map(doc => {
+                    return {
+                        name: doc.name,
+                        description: doc.description,
+                        price: doc.price,
+                        coffeeImage: doc.coffeeImage,
+                        _id: doc._id,
+                        request: {
+                            type: "GET",
+                            url: "http://localhost:5000/coffee/" + doc._id
+                        }
+                    };
+                })
+            };
+            res.status(200).json(response);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            });
+        });
 });
 
 router.post("/", upload.single("coffeeImage"), (req, res, next) => {
@@ -30,7 +67,8 @@ router.post("/", upload.single("coffeeImage"), (req, res, next) => {
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
         description: req.body.description,
-        price: req.body.price
+        price: req.body.price,
+        coffeeImage: req.file.path
     });
     coffee
         .save()
