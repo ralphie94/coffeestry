@@ -6,7 +6,7 @@ const path = require("path");
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, "./uploads/");
+        cb(null, "../uploads/");
     },
     filename: function(req, file, cb) {
         cb(null, new Date().toISOString() + file.originalname);
@@ -95,6 +95,12 @@ router.post("/add", upload.single("coffeeImage"), (req, res, next) => {
                 error: err
             });
         });
+});
+
+router.delete("/:id", (req, res) => {
+    Coffee.findByIdAndDelete(req.params.id)
+        .then(() => res.json("Coffee deleted."))
+        .catch(err => res.status(400).json("Error: " + err))
 });
 
 module.exports = router;

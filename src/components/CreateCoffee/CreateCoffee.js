@@ -47,7 +47,7 @@ class CreateCoffee extends Component {
         e.preventDefault();
         const formData = new FormData();
 
-        formData.append("file", this.state.files);
+        formData.append("file", this.state.file);
 
         const coffee = {
             name: this.state.name,
