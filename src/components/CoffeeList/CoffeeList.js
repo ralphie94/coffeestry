@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import axios from "axios";
 
 const Coffee = props => (
-    <tr>
-      <td>{props.coffee.name}</td>
-      <td>{props.coffee.coffeeImage}</td>
-      <td>{props.coffee.description}</td>
-      <td>{props.coffee.price}</td>
-    </tr>
+    <ul>
+      <li>{props.coffee.name}</li>
+      <li><img src={`http://localhost:5000/${props.coffee.coffeeImage}`} /></li>
+      <li>{props.coffee.description}</li>
+      <li>{props.coffee.price}</li>
+    </ul>
 )
 
 class CoffeeList extends Component {
@@ -39,20 +39,11 @@ class CoffeeList extends Component {
         return (
             <div>
                 <h1>Coffee</h1>
-                <table>
-                <thead className="thead-light">
-                    <tr>
-                    <th>Name</th>
-                    <th>Coffee Image</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    { this.coffeeList() }
-                    {this.props.coffeeImage && <img src={this.props.coffeeImage} />}
-                </tbody>
-                </table>
+                <ul>
+                    <li>
+                        { this.coffeeList() }
+                    </li>
+                </ul>
             </div>
         )
     }
