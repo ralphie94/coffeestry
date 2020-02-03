@@ -5,14 +5,8 @@ class Navbar extends Component {
     render() {
         return (
             <div>
-                <ul>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/create">Create New Coffee</Link>
-                    </li>
-                </ul>
+                <Link to="/">Home</Link>
+                <Link to="/create">Create New Coffee</Link>
             </div>
         )
     }

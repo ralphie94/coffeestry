@@ -3,10 +3,11 @@ import axios from "axios";
 
 const Coffee = props => (
     <ul>
-      <li>{props.coffee.name}</li>
-      <li><img src={`http://localhost:5000/${props.coffee.coffeeImage}`} /></li>
-      <li>{props.coffee.description}</li>
-      <li>{props.coffee.price}</li>
+      <li><h1>{props.coffee.name}</h1></li>
+      <li><img src={`http://localhost:5000/${props.coffee.coffeeImage}`} style={{width: "150px"}}/></li>
+      <li><p>{props.coffee.description}</p></li>
+      <li><p>{props.coffee.price}</p></li>
+      <li><button>Add to cart</button></li>
     </ul>
 )
 
@@ -39,11 +40,7 @@ class CoffeeList extends Component {
         return (
             <div>
                 <h1>Coffee</h1>
-                <ul>
-                    <li>
-                        { this.coffeeList() }
-                    </li>
-                </ul>
+                    { this.coffeeList() }
             </div>
         )
     }

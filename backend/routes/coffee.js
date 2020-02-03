@@ -97,6 +97,12 @@ router.post("/add", upload.single("coffeeImage"), (req, res, next) => {
         });
 });
 
+router.get("/:id", (req, res) => {
+    Coffee.findById(req.params.id)
+        .then(coffee => res.json(coffee))
+        .catch(err => res.status(400).json("Error: " + err))
+});
+
 router.delete("/:id", (req, res) => {
     Coffee.findByIdAndDelete(req.params.id)
         .then(() => res.json("Coffee deleted."))
