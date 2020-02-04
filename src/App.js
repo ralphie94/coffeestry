@@ -6,16 +6,17 @@ import CreateCoffee from "./components/CreateCoffee/CreateCoffee";
 import CoffeeList from "./components/CoffeeList/CoffeeList";
 import CoffeeShow from "./components/CoffeeShow/CoffeeShow";
 
+import "./App.css";
+
 function App() {
   return (
     <div>
-      <h1>Organic Coffeestry</h1>
       <Router>
         <div className="container">
           <Navbar />
           <Route path="/" exact component={CoffeeList} />
           <Route path="/create" component={CreateCoffee} />
-          <Route path="/coffee" component={CoffeeShow} />
+          <Route path="/coffee/:id" component={CoffeeShow} />
         </div>
       </Router>
     </div>

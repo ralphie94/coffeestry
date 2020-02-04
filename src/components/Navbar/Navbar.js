@@ -1,13 +1,22 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+import "./Navbar.css";
+
 class Navbar extends Component {
     render() {
         return (
-            <div>
-                <Link to="/">Home</Link>
-                <Link to="/create">Create New Coffee</Link>
+            <header>
+            <div className="nav-continer">
+                <h1 className="nav-title">Organic Coffeestry</h1>
+                <nav>
+                    <ul>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/create">Create New Coffee</Link></li>
+                    </ul>
+                </nav>
             </div>
+            </header>
         )
     }
 }
