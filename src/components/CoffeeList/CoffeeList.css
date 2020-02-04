@@ -19,6 +19,8 @@ ul {
         display: grid;
         grid-template-rows: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
+        padding: 0px ;
+        grid-gap: 50px;
     }
 
     .coffee {

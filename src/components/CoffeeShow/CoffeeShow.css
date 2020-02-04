@@ -2,3 +2,22 @@
     width: 300px;
     height: 300px;
 }
+
+@media (max-width:768px) {
+    .coffee-show {
+        width: 200px;
+        height: 200px;
+    }
+
+    .coffee-show-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+
+    .coffee-name {
+        display: none;
+    }
+}

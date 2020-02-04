@@ -24,9 +24,9 @@ class CoffeeShow extends Component {
 
     render() {
         return (
-            <div>
+            <div className="coffee-show-container">
                 <ul>
-                    <li><h1>{this.state.coffee.name}</h1></li>
+                    <li><h1 className="coffee-name">{this.state.coffee.name}</h1></li>
                     <li><img className="coffee-show" src={`http://localhost:5000/${this.state.coffee.coffeeImage}`} alt="" /></li>
                     <li><p>{this.state.coffee.description}</p></li>
                     <li>${this.state.coffee.price}</li>
