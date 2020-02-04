@@ -6,7 +6,7 @@ import "./CoffeeList.css";
 
 const Coffee = props => (
     <ul>
-      <li><h1>{props.coffee.name}</h1></li>
+      <li><h3>{props.coffee.name}</h3></li>
       <li><Link to={"/coffee/"+props.coffee._id}><img className="coffee" src={`http://localhost:5000/${props.coffee.coffeeImage}`} alt="" /></Link></li>
       <li><p>{props.coffee.description}</p></li>
       <li><p>${props.coffee.price}</p></li>

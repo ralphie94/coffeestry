@@ -13,3 +13,16 @@
 ul {
     list-style: none;
 }
+
+@media (max-width: 768px) {
+    .coffee-list {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .coffee {
+        width: 100px;
+        height: 100px;
+    }
+}
