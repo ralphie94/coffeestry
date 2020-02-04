@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar/Navbar";
 import CreateCoffee from "./components/CreateCoffee/CreateCoffee";
 import CoffeeList from "./components/CoffeeList/CoffeeList";
 import CoffeeShow from "./components/CoffeeShow/CoffeeShow";
+import Cart from "./components/Cart/Cart";
 
 import "./App.css";
 
@@ -26,6 +27,7 @@ class App extends Component {
             <Navbar />
             <Route path="/" exact component={CoffeeList} />
             <Route path="/create" component={CreateCoffee} />
+            <Route path="/cart" component={Cart} />
             <Route path="/coffee/:id" component={CoffeeShow} />
           </div>
         </Router>
