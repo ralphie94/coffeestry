@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar/Navbar";
@@ -8,19 +8,30 @@ import CoffeeShow from "./components/CoffeeShow/CoffeeShow";
 
 import "./App.css";
 
-function App() {
-  return (
-    <div>
-      <Router>
-        <div className="container">
-          <Navbar />
-          <Route path="/" exact component={CoffeeList} />
-          <Route path="/create" component={CreateCoffee} />
-          <Route path="/coffee/:id" component={CoffeeShow} />
-        </div>
-      </Router>
-    </div>
-  );
+class App extends Component {
+  state = {
+    currentUser: null
+  }
+
+  doSetCurrentUser = user =>
+    this.setState({
+      currentUser: user
+    });
+
+  render() {
+    return (
+      <div>
+        <Router>
+          <div className="container">
+            <Navbar />
+            <Route path="/" exact component={CoffeeList} />
+            <Route path="/create" component={CreateCoffee} />
+            <Route path="/coffee/:id" component={CoffeeShow} />
+          </div>
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;

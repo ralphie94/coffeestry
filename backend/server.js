@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const bodyParser = require("body-parser");
@@ -21,6 +22,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(logger("dev"));
+app.use(session({
+    secret: "she's my moomoo, she's my moomoo",
+    resave: false,
+    saveUninitialized: true
+}));
 
 app.use("/users", usersRouter);
 app.use("/coffee", coffeeRouter);

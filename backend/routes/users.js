@@ -33,4 +33,18 @@ router.post("/", async (req, res) => {
     }
 });
 
+router.post("/login", async (req, res) => {
+    console.log("hit");
+    try {
+        const foundUser = await User.findOne({username: req.body.username})
+        req.session.userId = foundUser._id
+        res.json({
+            user: foundUser,
+            success: foundUser ? true : false
+        })
+    } catch(err) {
+        res.json({err})
+    }
+});
+
 module.exports = router;
