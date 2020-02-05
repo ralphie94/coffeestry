@@ -10,6 +10,7 @@ require("./db/db");
 
 const usersRouter = require("./routes/users");
 const coffeeRouter = require("./routes/coffee");
+const ordersRouter = require("./routes/orders");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -30,6 +31,7 @@ app.use(session({
 
 app.use("/users", usersRouter);
 app.use("/coffee", coffeeRouter);
+app.use("/orders", ordersRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
