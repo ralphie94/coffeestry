@@ -26,12 +26,14 @@ class CoffeeShow extends Component {
         return (
             <div className="coffee-show-container">
                 <ul>
-                    <li><h1 className="coffee-name">{this.state.coffee.name}</h1></li>
                     <li><img className="coffee-show" src={`http://localhost:5000/${this.state.coffee.coffeeImage}`} alt="" /></li>
-                    <li><p>{this.state.coffee.description}</p></li>
-                    <li>${this.state.coffee.price}</li>
+                    <div className="coffee-info">
+                        <li><h1 className="coffee-name">{this.state.coffee.name}</h1></li>
+                        <li><p>{this.state.coffee.description}</p></li>
+                        <li>${this.state.coffee.price}</li>
+                        <button>Add to cart</button>
+                    </div>
                 </ul>
-                <button>Add to cart</button>
             </div>
         )
     }

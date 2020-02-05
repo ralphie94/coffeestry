@@ -3,6 +3,29 @@
     height: 300px;
 }
 
+.coffee-show-container ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 10em;
+}
+
+.coffee-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.coffee-info li {
+    padding: 20px;
+}
+
+.coffee-name {
+    font-size: 70px;
+}
+
 @media (max-width:768px) {
     .coffee-show {
         width: 200px;
