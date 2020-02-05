@@ -34,15 +34,34 @@ router.get("/", (req, res, next) => {
   });
 
 router.post("/", (req, res, next) => {
+    Coffee.findById(req.body.coffeeId)
+    .then(coffee => {
+      if (!coffee) {
+        return res.status(404).json({
+          message: "Coffee not found"
+        });
+    }
     const order = new Order({
         _id: mongoose.Types.ObjectId(),
         quantity: req.body.quantity,
         coffee: req.body.coffeeId
     });
-    order.save()
+        return order.save()
+    })
     .then(result => {
         console.log(result);
-        res.status(201).json(result);
+        res.status(201).json({
+            message: "Order stored",
+            createdOrder: {
+                _id: result._id,
+                coffee: result.coffee,
+                quantity: result.quantity
+            },
+            request: {
+                type: "GET",
+                url: "http://localhost:5000/orders/" + result._id
+            }
+        });
     })
     .catch(err => {
         console.log(err);
