@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Banner from "../Banner/Banner";
 
 import "./CoffeeList.css";
 
@@ -53,6 +54,7 @@ class CoffeeList extends Component {
     render() {
         return (
             <div>
+                <Banner />
                 <h1>Coffee</h1>
                 <div className="coffee-list">
                     { this.coffeeList() }

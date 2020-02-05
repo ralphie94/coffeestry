@@ -1,8 +1,10 @@
 .coffee-list {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 70px;
     justify-items: center;
+    padding: 0 15rem;
 }
 
 .coffee {
@@ -24,7 +26,7 @@ ul {
     }
 
     .coffee {
-        width: 100px;
-        height: 100px;
+        width: 130px;
+        height: 130px;
     }
 }

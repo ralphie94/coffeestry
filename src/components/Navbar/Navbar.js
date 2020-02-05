@@ -13,7 +13,6 @@ class Navbar extends Component {
                     <div className="logo">
                         <h1 className="nav-title">Organic Coffeestry</h1>
                     </div>
-                    <div className="spacer" />
                     <div className="toolbar_navigation-items">
                         <ul className="nav-links">
                             <li><Link className="link" to="/">Home</Link></li>
