@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import DrawerToggleButton from "../SideDrawer/DrawerToggleButton";
 
 import "./Navbar.css";
+import Logo from "../../images/organic-coffeestry.png";
 
 class Navbar extends Component {
     render() {
@@ -11,7 +12,7 @@ class Navbar extends Component {
             <header className="toolbar">
                 <nav className="toolbar__navigation">
                     <div className="logo">
-                        <h1 className="nav-title">Organic Coffeestry</h1>
+                        <img className="nav-title" src={Logo} />
                     </div>
                     <div className="toolbar_navigation-items">
                         <ul className="nav-links">

@@ -3,7 +3,7 @@
     top: 0;
     left: 0;
     background: #104e3b;
-    height: 100px;
+    height: 140px;
 }
 
 .toolbar__navigation {
@@ -15,8 +15,7 @@
 }
 
 .nav-title {
-    font-size: 30px;
-    color: white;
+    width: 8em;
 }
 
 .toolbar_navigation-items {
