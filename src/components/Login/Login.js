@@ -13,11 +13,11 @@ class Login extends Component {
     handleSubmit = async (e) =>{
         e.preventDefault();
         const loginResponse = await fetch ("/users/login", {
-            method: 'POST',
+            method: "POST",
             credentials: "include",
             body: JSON.stringify(this.state),
             headers:{
-                "Content-type" : 'application/json'
+                "Content-type" : "application/json"
             }
         })
         const parsedResponse = await loginResponse.json();
