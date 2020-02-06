@@ -8,6 +8,7 @@ import CreateCoffee from "./components/CreateCoffee/CreateCoffee";
 import CoffeeList from "./components/CoffeeList/CoffeeList";
 import CoffeeShow from "./components/CoffeeShow/CoffeeShow";
 import Cart from "./components/Cart/Cart";
+import Login from "./components/Login/Login";
 
 import "./App.css";
 
@@ -49,6 +50,7 @@ class App extends Component {
             <Route path="/create" component={CreateCoffee} />
             <Route path="/cart" component={Cart} />
             <Route path="/coffee/:id" component={CoffeeShow} />
+            <Route path="/login" component={Login} currentUser={this.state.currentUser} doSetCurrentUser={this.doSetCurrentUser} />
           </div>
         </Router>
       </div>
