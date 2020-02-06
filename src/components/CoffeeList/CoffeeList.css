@@ -2,14 +2,14 @@
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 70px;
+    grid-gap: 8em;
     justify-items: center;
-    padding: 0 15rem;
+    padding: 0 11rem;
 }
 
 .coffee {
-    width: 200px;
-    height: 200px;
+    width: 175px;
+    height: 175px;
 }
 
 ul {

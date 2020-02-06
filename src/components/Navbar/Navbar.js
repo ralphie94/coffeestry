@@ -12,7 +12,7 @@ class Navbar extends Component {
             <header className="toolbar">
                 <nav className="toolbar__navigation">
                     <div className="logo">
-                        <img className="nav-title" src={Logo} />
+                        <Link to="/"><img className="nav-title" src={Logo} /></Link>
                     </div>
                     <div className="toolbar_navigation-items">
                         <ul className="nav-links">
