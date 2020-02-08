@@ -51,7 +51,15 @@ class App extends Component {
             <Route path="/create" component={CreateCoffee} />
             <Route path="/cart" component={Cart} />
             <Route path="/coffee/:id" component={CoffeeShow} />
-            <Route path="/login" render={() => (<Login currentUser={this.state.currentUser} doSetCurrentUser={this.doSetCurrentUser} />)}/>
+            <Route
+              path='/login'
+              render={() => (
+                <Login
+                  currentUser={this.state.currentUser}
+                  doSetCurrentUser={this.doSetCurrentUser}
+                />
+              )}
+            />
             <Route
               path='/register'
               render={() => (
