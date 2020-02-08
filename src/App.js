@@ -44,7 +44,7 @@ class App extends Component {
       <div>
         <Router>
         <Navbar drawerClickHandler={this.drawerTogglerClickHandler} currentUser={this.state.currentUser} />
-        <SideDrawer show={this.state.sideDrawerOpen} click={this.backdropClickHandler} />
+        <SideDrawer show={this.state.sideDrawerOpen} click={this.backdropClickHandler} currentUser={this.state.currentUser} />
         {backdrop}
           <div className="container">
             <Route path="/" exact component={CoffeeList} />
