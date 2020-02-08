@@ -17,7 +17,9 @@ class Navbar extends Component {
                     <div className="toolbar_navigation-items">
                         <ul className="nav-links">
                             <li><Link className="link" to="/">Home</Link></li>
-                            <li><Link className="link" to="/login">Login</Link></li>
+                            {
+                                !this.props.currentUser && <li><Link className="link" to="/login">Login</Link></li>
+                            }
                             <li><Link className="link" to="/create">Create New Coffee</Link></li>
                             <li><Link className="link" to="/cart">Cart</Link></li>
                         </ul>

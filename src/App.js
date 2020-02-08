@@ -43,7 +43,7 @@ class App extends Component {
     return (
       <div>
         <Router>
-        <Navbar drawerClickHandler={this.drawerTogglerClickHandler} />
+        <Navbar drawerClickHandler={this.drawerTogglerClickHandler} currentUser={this.state.currentUser} />
         <SideDrawer show={this.state.sideDrawerOpen} click={this.backdropClickHandler} />
         {backdrop}
           <div className="container">

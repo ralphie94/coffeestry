@@ -7,8 +7,7 @@ class Login extends Component {
         username: "",
         password: "",
         logged: false,
-        message: "",
-        isAdmin: false
+        message: ""
     }
 
     handleSubmit = async (e) =>{
@@ -25,8 +24,7 @@ class Login extends Component {
         if(parsedResponse.success) {
             this.props.doSetCurrentUser(parsedResponse.user)
             this.setState({
-                logged: true,
-                isAdmin: true
+                logged: true
             })
         } else {
             console.log("HIT ELSE")
@@ -44,12 +42,13 @@ class Login extends Component {
 
     render() {
         const { username, password, message } = this.state
+        const { currentUser } = this.props
         return(
             <div>
                 {
-                this.props.currentUser
-                ? (<Redirect to={`/`} />
-                ) : (this.state.isAdmin ? <Redirect to={`/create`} />
+                currentUser && currentUser.isAdmin
+                ? (<Redirect to={`/create`} />
+                ) : (currentUser ? <Redirect to={`/`} />
                 : <form onSubmit={this.handleSubmit}>
                 <h1>Login</h1>
                     <h3>{message}</h3>
