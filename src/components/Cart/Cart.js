@@ -26,7 +26,7 @@ class Cart extends Component {
     }
 
     componentDidMount() {
-        axios.get("http://localhost:5000/coffee/")
+        axios.get("http://localhost:5000/orders/")
             .then(coffee => {
                 this.setState({ coffeeCart: coffee.data.coffee })
             })
@@ -43,7 +43,7 @@ class Cart extends Component {
     }
 
     removeCoffee(id) {
-        axios.delete("http://localhost:5000/coffee/"+id)
+        axios.delete("http://localhost:5000/orders/"+id)
             .then(response => { console.log(response.data)});
 
         this.setState({
