@@ -8,7 +8,7 @@ class CoffeeShow extends Component {
     constructor(props) {
         super(props);
 
-        this.addCoffee = this.addCoffee.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             coffee: {}
@@ -25,38 +25,35 @@ class CoffeeShow extends Component {
             })
     }
 
-    addCoffee = async (coffee) => {
-        try{
-            const response = await fetch("/orders",{
-                method:"POST",
-                credentials:"include",
-                body:JSON.stringify(coffee),
-                headers:{
-                    "Content-Type": "application/json"
-                }
-            })
-            const parsedResponse = await response.json()
-            if(parsedResponse.success){
-                this.props.history.push("/cart")
-            }
+    onSubmit(e) {
+        e.preventDefault();
 
-        }catch(err){
-            console.log(err)
+        const order = {
+            coffee: this.state.coffee
         }
+
+        console.log(order);
+
+        axios.post("http://localhost:5000/orders", order)
+            .then(res => console.log(res.data));  
+
+        window.location = "/cart";
     }
 
     render() {
         return (
             <div className="coffee-show-container">
+                <form onSubmit={this.onSubmit}>
                     <ul>
                         <li><img className="coffee-show" src={`http://localhost:5000/${this.state.coffee.coffeeImage}`} alt="" /></li>
                         <div className="coffee-info">
                             <li><h1 className="coffee-name">{this.state.coffee.name}</h1></li>
                             <li><p>{this.state.coffee.description}</p></li>
                             <li>${this.state.coffee.price}</li>
-                            <button value="Submit" onClick={() =>{this.addCoffee(this.state.coffee)}}>Add to cart</button>
+                            <input type="submit" value="Add to cart" />
                         </div>
                     </ul>
+                </form>
             </div>
         )
     }

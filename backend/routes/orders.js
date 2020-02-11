@@ -35,19 +35,14 @@ router.get("/", (req, res, next) => {
 
 router.post("/", (req, res, next) => {
     Coffee.findById(req.body.coffeeId)
-    .then(coffee => {
-      if (!coffee) {
-        return res.status(404).json({
-          message: "Coffee not found"
-        });
-    }
+
     const order = new Order({
         _id: mongoose.Types.ObjectId(),
         quantity: req.body.quantity,
         coffee: req.body.coffeeId
     });
         return order.save()
-    })
+
     .then(result => {
         console.log(result);
         res.status(201).json({
@@ -65,8 +60,8 @@ router.post("/", (req, res, next) => {
     })
     .catch(err => {
         console.log(err);
-        return res.status(500).json({
-          error: err
+        res.status(500).json({
+            error: err
         });
     });
 });
