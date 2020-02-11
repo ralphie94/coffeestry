@@ -6,10 +6,10 @@ import "./Cart.css";
 
 const Coffee = props => (
     <ul>
-      <li><h3>{props.coffee.name}</h3></li>
-      <li><Link to={"/coffee/"+props.coffee._id}><img className="coffee" src={`http://localhost:5000/${props.coffee.coffeeImage}`} alt="" /></Link></li>
+      <li><h3>{props.coffee.coffee.name}</h3></li>
+      <li><Link to={"/coffee/"+props.coffee._id}><img className="coffee" src={`http://localhost:5000/${props.coffee.coffee.coffeeImage}`} alt="" /></Link></li>
       <li><p>{props.coffee.description}</p></li>
-      <li><p>${props.coffee.price}</p></li>
+      <li><p>${props.coffee.coffee._id.price}</p></li>
       <li><a href="#" onClick={() => { props.removeCoffee(props.coffee._id) }}>Delete</a></li>
     </ul>
 )
@@ -28,7 +28,7 @@ class Cart extends Component {
     componentDidMount() {
         axios.get("http://localhost:5000/orders/")
             .then(coffee => {
-                this.setState({ coffeeCart: coffee.data.coffee })
+                this.setState({ coffeeCart: coffee.data.orders })
             })
             .catch((error) => {
                 console.log(error);
