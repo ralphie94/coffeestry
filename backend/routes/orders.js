@@ -8,7 +8,7 @@ const Coffee = require("../models/Coffee");
 router.get("/", (req, res, next) => {
     Order.find()
       .select("coffee quantity _id")
-      .populate('coffee', 'name')
+      .populate('coffee', 'name price coffeeImage')
       .exec()
       .then(docs => {
         res.status(200).json({
@@ -41,7 +41,7 @@ router.post("/", (req, res, next) => {
         quantity: req.body.quantity,
         coffee: req.body.coffeeId
     });
-        return order.save()
+    return order.save()
 
     .then(result => {
         console.log(result);
@@ -57,6 +57,7 @@ router.post("/", (req, res, next) => {
                 url: "http://localhost:5000/orders/" + result._id
             }
         });
+        
     })
     .catch(err => {
         console.log(err);

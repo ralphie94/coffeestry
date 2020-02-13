@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { withRouter } from "react-router-dom"
 
 import "./CoffeeShow.css";
 
@@ -29,13 +28,18 @@ class CoffeeShow extends Component {
         e.preventDefault();
 
         const order = {
-            coffee: this.state.coffee
+            coffeeId: this.state.coffee._id
         }
 
         console.log(order);
 
         axios.post("http://localhost:5000/orders", order)
-            .then(res => console.log(res.data));  
+            .then(res => {
+                console.log(res.data)
+            })
+            .catch(error => {
+                console.log(error);
+            })
 
         window.location = "/cart";
     }
@@ -43,20 +47,18 @@ class CoffeeShow extends Component {
     render() {
         return (
             <div className="coffee-show-container">
-                <form onSubmit={this.onSubmit}>
                     <ul>
                         <li><img className="coffee-show" src={`http://localhost:5000/${this.state.coffee.coffeeImage}`} alt="" /></li>
                         <div className="coffee-info">
                             <li><h1 className="coffee-name">{this.state.coffee.name}</h1></li>
                             <li><p>{this.state.coffee.description}</p></li>
                             <li>${this.state.coffee.price}</li>
-                            <input type="submit" value="Add to cart" />
+                            <button value="Submit" onClick={this.onSubmit}>Add to cart</button>
                         </div>
                     </ul>
-                </form>
             </div>
         )
     }
 };
 
-export default withRouter(CoffeeShow);
+export default CoffeeShow;

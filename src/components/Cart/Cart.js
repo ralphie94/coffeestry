@@ -9,8 +9,9 @@ const Coffee = props => (
       <li><h3>{props.coffee.coffee.name}</h3></li>
       <li><Link to={"/coffee/"+props.coffee._id}><img className="coffee" src={`http://localhost:5000/${props.coffee.coffee.coffeeImage}`} alt="" /></Link></li>
       <li><p>{props.coffee.description}</p></li>
-      <li><p>${props.coffee.coffee._id.price}</p></li>
+      <li><p>${props.coffee.coffee.price}</p></li>
       <li><a href="#" onClick={() => { props.removeCoffee(props.coffee._id) }}>Delete</a></li>
+      <li><select><option>{props.coffee.quantity}</option></select></li>
     </ul>
 )
 
