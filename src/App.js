@@ -50,7 +50,7 @@ class App extends Component {
             <Route path="/" exact component={CoffeeList} />
             <Route path="/create" component={CreateCoffee} />
             <Route path="/cart" component={Cart} />
-            <Route path="/coffee/:id" component={CoffeeShow} />
+            <Route path="/coffee/:id" component={CoffeeShow} currentUser={this.state.currentUser} />
             <Route
               path='/login'
               render={() => (

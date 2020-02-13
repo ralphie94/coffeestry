@@ -16,9 +16,9 @@ class Register extends Component {
         })
     }
 
-    handleSubmit = async (e) =>{
+    handleSubmit = (e) =>{
         e.preventDefault()
-        const loginResponse = await fetch ("/users", {
+        fetch ("/users", {
             method: "POST",
             credentials: "include",
             body: JSON.stringify(this.state),
@@ -26,19 +26,8 @@ class Register extends Component {
                 "Content-type" : 'application/json'
             }
         })
-        const parsedResponse = await loginResponse.json();
-        if(parsedResponse.success) {
-            console.log("HIT FRONT")
-            this.props.doSetCurrentUser(parsedResponse.user)
-            this.setState({
-                logged: true
-            })
-        } else {
-            console.log("HIT ELSE")
-            this.setState({
-                message: "Try again!"
-            })
-        }
+        .then(results => results.json())
+        .then(data => this.setState({data: data, logged: true}))
     }
 
     render(){

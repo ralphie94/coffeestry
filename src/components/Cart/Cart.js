@@ -27,7 +27,7 @@ class Cart extends Component {
     }
 
     componentDidMount() {
-        axios.get("http://localhost:5000/orders/")
+        axios.get("http://localhost:5000/orders")
             .then(coffee => {
                 this.setState({ coffeeCart: coffee.data.orders })
             })
