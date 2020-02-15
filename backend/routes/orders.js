@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 
 const Order = require("../models/Order");
 const Coffee = require("../models/Coffee");
-const User = require("../models/User");
 
 router.get("/", (req, res, next) => {
     Order.find()

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import "./Cart.css";
 
@@ -27,7 +27,7 @@ class Cart extends Component {
     }
 
     componentDidMount() {
-        axios.get("http://localhost:5000/orders")
+        axios.get(`http://localhost:5000/users/orders/${this.props.match.params.id}`)
             .then(coffee => {
                 this.setState({ coffeeCart: coffee.data.orders })
             })
@@ -68,4 +68,4 @@ class Cart extends Component {
     }
 };
 
-export default Cart;
+export default withRouter(Cart);

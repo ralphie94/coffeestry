@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
 
 import "./CoffeeShow.css";
 
@@ -33,7 +34,7 @@ class CoffeeShow extends Component {
 
         console.log(order);
 
-        axios.post("http://localhost:5000/orders", order)
+        axios.post("http://localhost:5000/users/addToCart", order)
             .then(res => {
                 console.log(res.data)
             })
@@ -41,7 +42,7 @@ class CoffeeShow extends Component {
                 console.log(error);
             })
 
-        window.location = "/cart";
+        // window.location = `/cart/${this.props.currentUser._id}`;
     }
 
     render() {
@@ -61,4 +62,4 @@ class CoffeeShow extends Component {
     }
 };
 
-export default CoffeeShow;
+export default withRouter(CoffeeShow);
