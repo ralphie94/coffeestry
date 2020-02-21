@@ -6,8 +6,9 @@ const Order = require("../models/Order");
 const Coffee = require("../models/Coffee");
 const User = require("../models/User");
 
-router.get("/", (req, res, next) => {
-    Order.find()
+router.get("/", async (req, res, next) => {
+    let userId = await User.findById(req.session.userId);
+    Order.find({ userId })
       .select("coffee quantity _id")
       .populate('coffee', 'name price coffeeImage')
       .exec()
@@ -73,7 +74,7 @@ router.post("/cart", async (req, res) => {
     Coffee.findById(req.body.coffeeId)
     const { coffeeId, quantity } = req.body
 
-    const userId = "5e34c84ae03f736f9786d313"
+    const userId = await User.findById(req.session.userId);
 
     try {
         let cart = await Order.findOne({ userId });

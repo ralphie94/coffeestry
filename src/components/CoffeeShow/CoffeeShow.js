@@ -23,25 +23,37 @@ class CoffeeShow extends Component {
             })
     }
 
-    addCoffee = async (coffee)=>{
-        try{
-            const response = await fetch("/orders/cart",{
-                method:"POST",
-                credentials:"include",
-                body:JSON.stringify(coffee),
-                headers:{
-                    "Content-Type": "application/json"
-                }
-            })
-            const parsedResponse = await response.json()
-            if(parsedResponse.success){
-                this.props.history.push(`/cart/${this.props.currentUser._id}`)
-                console.log("success");
-            }
+    // addCoffee = async (coffee)=>{
+    //     try{
+    //         const response = await fetch("/orders/cart",{
+    //             method:"POST",
+    //             credentials:"include",
+    //             body:JSON.stringify(coffee),
+    //             headers:{
+    //                 "Content-Type": "application/json"
+    //             }
+    //         })
+    //         const parsedResponse = await response.json()
+    //         if(parsedResponse.success){
+    //             this.props.history.push(`/cart/${this.props.currentUser._id}`)
+    //             console.log("success");
+    //         }
 
-        }catch(err){
-            console.log(err)
+    //     }catch(err){
+    //         console.log(err)
+    //     }
+    // }
+
+    async addCoffee(){
+
+        const order = {
+            coffee: this.state.coffee._id
         }
+
+        let res = await axios.post("http://localhost:5000/orders/cart", order)
+        .then(res => console.log(res.data));
+
+        this.props.history.push(`/cart/${this.props.currentUser._id}`);
     }
 
     render() {

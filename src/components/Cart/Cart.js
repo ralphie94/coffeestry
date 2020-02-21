@@ -11,7 +11,7 @@ const Coffee = props => (
       <li><p>{props.coffee.description}</p></li>
       <li><p>${props.coffee.coffee.price}</p></li>
       <li><a href="#" onClick={() => { props.removeCoffee(props.coffee._id) }}>Delete</a></li>
-      <li><select><option>{props.coffee.quantity}</option></select></li>
+      <li><select><option>{props.coffee.coffee.quantity}</option></select></li>
     </ul>
 )
 
@@ -19,30 +19,22 @@ class Cart extends Component {
     constructor(props){
     super(props)
     this.state = {
-        coffeeCart: []
+        coffee: []
     };
 }
 
-    componentDidMount() {
-        this.getUsersCoffee()
-            .then(coffee => {
-                this.setState({ coffeeCart: coffee })
-            })
-    }
-
-    getUsersCoffee = async (coffee) => {
-        try {
-            const postResponse = await fetch(`/orders/${this.props.match.params.id}`)
-            const parsedResponse = await postResponse.json();
-            console.log(parsedResponse);
-            return parsedResponse.user
-        } catch(err){
-            console.log(err);
-        }
-    }
+componentDidMount() {
+    axios.get(`http://localhost:5000/orders/${this.props.match.params.id}`)
+        .then(coffee => {
+            this.setState({ coffee: coffee.data.orders })
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+}
 
     coffeeCartList() {
-        return this.state.coffeeCart.map(currentcoffee => {
+        return this.state.coffee.map(currentcoffee => {
             return <Coffee coffee={currentcoffee} removeCoffee={this.removeCoffee} key={currentcoffee._id} />;
         })
     }
@@ -52,7 +44,7 @@ class Cart extends Component {
             .then(response => { console.log(response.data)});
 
         this.setState({
-            coffeeCart: this.state.coffeeCart.filter(el => el._id !== id)
+            coffee: this.state.coffee.filter(el => el._id !== id)
         })
     }
 
