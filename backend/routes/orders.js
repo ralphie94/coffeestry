@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 
 const Order = require("../models/Order");
 const Coffee = require("../models/Coffee");
+const User = require("../models/User");
 
 router.get("/", (req, res, next) => {
     Order.find()
@@ -33,40 +34,75 @@ router.get("/", (req, res, next) => {
       });
   });
 
-router.post("/", (req, res, next) => {
-    Coffee.findById(req.body.coffeeId)
+// router.post("/", (req, res, next) => {
+//     Coffee.findById(req.body.coffeeId)
 
-    const order = new Order({
-        _id: mongoose.Types.ObjectId(),
-        quantity: req.body.quantity,
-        coffee: req.body.coffeeId
-    });
+//     const order = new Order({
+//         _id: mongoose.Types.ObjectId(),
+//         quantity: req.body.quantity,
+//         coffee: req.body.coffeeId
+//     });
 
-    return order.save()
+//     return order.save()
 
-    .then(result => {
-        console.log(result);
-        res.status(201).json({
-            message: "Order stored",
-            createdOrder: {
-                _id: result._id,
-                coffee: result.coffee,
-                quantity: result.quantity
-            },
-            request: {
-                type: "GET",
-                url: "http://localhost:5000/orders/" + result._id
-            }
-        });
+//     .then(result => {
+//         console.log(result);
+//         res.status(201).json({
+//             message: "Order stored",
+//             createdOrder: {
+//                 _id: result._id,
+//                 coffee: result.coffee,
+//                 quantity: result.quantity
+//             },
+//             request: {
+//                 type: "GET",
+//                 url: "http://localhost:5000/orders/" + result._id
+//             }
+//         });
         
-    })
-    .catch(err => {
+//     })
+//     .catch(err => {
+//         console.log(err);
+//         res.status(500).json({
+//             error: err
+//         });
+//     });
+// });
+
+router.post("/cart", async (req, res) => {
+    const { coffeeId, quantity } = req.body
+
+    const userId = "5e34c62ee03f736f9786d312";
+
+    try {
+        let cart = await Order.findOne({ userId });
+
+        if (cart) {
+            let itemIndex = cart.coffee.findIndex(c => c.coffeeId == coffeeId);
+
+            if (itemIndex > -1) {
+                let coffeeItem = cart.coffee[itemIndex];
+                coffeeItem.quantity = quantity;
+                cart.coffee[itemIndex] = coffeeItem;
+            } else {
+                cart.coffee.push({ coffeeId, quantity });
+            }
+            cart = await cart.save();
+            return res.status(201).send(cart);
+        } else {
+            const newCart = await Order.create({
+                _id: mongoose.Types.ObjectId(),
+                userId,
+                coffee: coffeeId,
+                quantity: quantity
+            });
+            return res.status(201).send(newCart);
+        }
+    } catch(err) {
         console.log(err);
-        res.status(500).json({
-            error: err
-        });
-    });
-});
+        res.status(500).send("Something went wrong");
+    }
+})
 
 router.get("/:orderId", (req, res, next) => {
     Order.findById(req.params.orderId)

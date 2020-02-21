@@ -8,7 +8,7 @@ class CoffeeShow extends Component {
     constructor(props) {
         super(props);
 
-        this.onSubmit = this.onSubmit.bind(this);
+        this.onSubmit = this.onSubmit.bind(this)
 
         this.state = {
             coffee: {}
@@ -42,7 +42,7 @@ class CoffeeShow extends Component {
                 console.log(error);
             })
 
-        // window.location = `/cart/${this.props.currentUser._id}`;
+        window.location = `/cart/${this.props.currentUser._id}`;
     }
 
     render() {
