@@ -16,25 +16,29 @@ const Coffee = props => (
 )
 
 class Cart extends Component {
-    constructor(props) {
-        super(props);
-
-        this.removeCoffee = this.removeCoffee.bind(this);
-
-        this.state = {
-            coffeeCart: []
-        };
-    }
+    constructor(props){
+    super(props)
+    this.state = {
+        coffeeCart: []
+    };
+}
 
     componentDidMount() {
-        axios.get(`http://localhost:5000/users/orders/${this.props.match.params.id}`)
+        this.getUsersCoffee()
             .then(coffee => {
-                this.setState({ coffeeCart: coffee.data.orders })
+                this.setState({ coffeeCart: coffee })
             })
-            .catch((error) => {
-                console.log(error);
-            })
-            console.log(this.state.coffeeCart);
+    }
+
+    getUsersCoffee = async (coffee) => {
+        try {
+            const postResponse = await fetch(`/orders/${this.props.match.params.id}`)
+            const parsedResponse = await postResponse.json();
+            console.log(parsedResponse);
+            return parsedResponse.user
+        } catch(err){
+            console.log(err);
+        }
     }
 
     coffeeCartList() {

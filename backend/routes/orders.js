@@ -70,9 +70,10 @@ router.get("/", (req, res, next) => {
 // });
 
 router.post("/cart", async (req, res) => {
+    Coffee.findById(req.body.coffeeId)
     const { coffeeId, quantity } = req.body
 
-    const userId = "5e34c62ee03f736f9786d312";
+    const userId = "5e34c84ae03f736f9786d313"
 
     try {
         let cart = await Order.findOne({ userId });
@@ -93,7 +94,7 @@ router.post("/cart", async (req, res) => {
             const newCart = await Order.create({
                 _id: mongoose.Types.ObjectId(),
                 userId,
-                coffee: coffeeId,
+                coffee: [{ coffeeId }],
                 quantity: quantity
             });
             return res.status(201).send(newCart);
@@ -104,29 +105,29 @@ router.post("/cart", async (req, res) => {
     }
 })
 
-router.get("/:orderId", (req, res, next) => {
-    Order.findById(req.params.orderId)
-        .exec()
-        .then(order => {
-            if (!order) {
-                return res.status(404).json({
-                    message: "Order not found"
-                });
-            }
-        res.status(200).json({
-            order: order,
-            request: {
-                type: "GET",
-                url: "http://localhost:5000/orders"
-                }
-            });
-        })
-        .catch(err => {
-            res.status(500).json({
-                error: err
-            });
-        });
-});
+// router.get("/:orderId", (req, res, next) => {
+//     Order.findById(req.params.orderId)
+//         .exec()
+//         .then(order => {
+//             if (!order) {
+//                 return res.status(404).json({
+//                     message: "Order not found"
+//                 });
+//             }
+//         res.status(200).json({
+//             order: order,
+//             request: {
+//                 type: "GET",
+//                 url: "http://localhost:5000/orders"
+//                 }
+//             });
+//         })
+//         .catch(err => {
+//             res.status(500).json({
+//                 error: err
+//             });
+//         });
+// });
 
 router.delete("/:orderId", (req, res, next) => {
     Order.remove({ _id: req.params.orderId })

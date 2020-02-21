@@ -8,8 +8,6 @@ class CoffeeShow extends Component {
     constructor(props) {
         super(props);
 
-        this.onSubmit = this.onSubmit.bind(this)
-
         this.state = {
             coffee: {}
         };
@@ -25,24 +23,25 @@ class CoffeeShow extends Component {
             })
     }
 
-    onSubmit(e) {
-        e.preventDefault();
+    addCoffee = async (coffee)=>{
+        try{
+            const response = await fetch("/orders/cart",{
+                method:"POST",
+                credentials:"include",
+                body:JSON.stringify(coffee),
+                headers:{
+                    "Content-Type": "application/json"
+                }
+            })
+            const parsedResponse = await response.json()
+            if(parsedResponse.success){
+                this.props.history.push(`/cart/${this.props.currentUser._id}`)
+                console.log("success");
+            }
 
-        const order = {
-            coffeeId: this.state.coffee._id
+        }catch(err){
+            console.log(err)
         }
-
-        console.log(order);
-
-        axios.post("http://localhost:5000/users/addToCart", order)
-            .then(res => {
-                console.log(res.data)
-            })
-            .catch(error => {
-                console.log(error);
-            })
-
-        window.location = `/cart/${this.props.currentUser._id}`;
     }
 
     render() {
@@ -54,7 +53,7 @@ class CoffeeShow extends Component {
                             <li><h1 className="coffee-name">{this.state.coffee.name}</h1></li>
                             <li><p>{this.state.coffee.description}</p></li>
                             <li>${this.state.coffee.price}</li>
-                            <button value="Submit" onClick={this.onSubmit}>Add to cart</button>
+                            <button value="Submit" onClick={() => {this.addCoffee(this.state.coffee)}}>Add to cart</button>
                         </div>
                     </ul>
             </div>
