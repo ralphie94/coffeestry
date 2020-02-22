@@ -57,13 +57,27 @@ router.post("/login", async (req, res) => {
     console.log("hit");
     try {
         const foundUser = await User.findOne({username: req.body.username})
-        req.session.userId = foundUser._id
-        res.json({
-            user: foundUser,
-            success: foundUser ? true : false
-        })
+        if(foundUser.validPassword(req.body.password)){
+            req.session.userId = foundUser._id;
+
+            res.json({
+                status: 200,
+                user: foundUser,
+                success: foundUser ? true : false,
+                message: "Login Successful"
+            })
+        } else {
+            req.session.message = "The login information does not match our records. Please try again."
+            res.json({
+                data: "Invalid Password",
+                message: req.session.message
+            })
+        }
     } catch(err) {
-        res.json({err})
+        res.json({
+            error: err,
+            message: "The username or password does not match our records. Please try again."
+        })
     }
 });
 

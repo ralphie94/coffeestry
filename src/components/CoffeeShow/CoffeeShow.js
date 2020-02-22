@@ -29,12 +29,7 @@ class CoffeeShow extends Component {
             coffee: this.state.coffee._id
         }
 
-        let res = await axios.post("http://localhost:5000/orders/cart", order, {
-            credentials: "include",
-            headers:{
-                "Content-Type": "application/json"
-            }
-    })
+        let res = await axios.post("http://localhost:5000/orders/cart", order)
         .then(res => console.log(res.data));
 
         this.props.history.push(`/cart/${this.props.currentUser._id}`);

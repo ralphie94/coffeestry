@@ -36,12 +36,10 @@ router.get("/", async (req, res, next) => {
   });
 
 router.post("/cart", async (req, res) => {
-    Coffee.findById(req.body.coffeeId)
     const { coffeeId, quantity } = req.body
 
-    const foundUser = await User.findById(req.session.foundUser);
-
     try {
+        const foundUser = await User.findById(req.session.foundUser);
         let cart = await Order.findOne({ foundUser });
 
         if (cart) {
@@ -57,11 +55,10 @@ router.post("/cart", async (req, res) => {
             cart = await cart.save();
             return res.status(201).send(cart);
         } else {
-            const newCart = await new Order({
+            const newCart = await Order.create({
                 _id: mongoose.Types.ObjectId(),
                 foundUser,
-                coffee: [{ coffeeId }],
-                quantity: quantity
+                coffee: [{ coffeeId, quantity }]
             });
             console.log(foundUser);
             
