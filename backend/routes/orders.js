@@ -92,7 +92,7 @@ router.post("/cart", async (req, res) => {
             cart = await cart.save();
             return res.status(201).send(cart);
         } else {
-            const newCart = await Order.create({
+            const newCart = await new Order({
                 _id: mongoose.Types.ObjectId(),
                 userId,
                 coffee: [{ coffeeId }],
