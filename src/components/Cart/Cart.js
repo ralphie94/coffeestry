@@ -25,7 +25,7 @@ class Cart extends Component {
 }
 
 componentDidMount() {
-    axios.get("http://localhost:5000/orders/")
+    axios.get("http://localhost:5000/orders/"+this.props.match.params.id)
         .then(coffee => {
             this.setState({ coffee: coffee.data.orders })
         })

@@ -7,8 +7,8 @@ const Coffee = require("../models/Coffee");
 const User = require("../models/User");
 
 router.get("/", async (req, res, next) => {
-    let userId = await User.findById(req.session.userId);
-    Order.find({ userId })
+    let foundUser = await User.findById(req.session.userId);
+    Order.find({ foundUser })
       .select("coffee quantity _id")
       .populate('coffee', 'name price coffeeImage')
       .exec()
@@ -35,49 +35,14 @@ router.get("/", async (req, res, next) => {
       });
   });
 
-// router.post("/", (req, res, next) => {
-//     Coffee.findById(req.body.coffeeId)
-
-//     const order = new Order({
-//         _id: mongoose.Types.ObjectId(),
-//         quantity: req.body.quantity,
-//         coffee: req.body.coffeeId
-//     });
-
-//     return order.save()
-
-//     .then(result => {
-//         console.log(result);
-//         res.status(201).json({
-//             message: "Order stored",
-//             createdOrder: {
-//                 _id: result._id,
-//                 coffee: result.coffee,
-//                 quantity: result.quantity
-//             },
-//             request: {
-//                 type: "GET",
-//                 url: "http://localhost:5000/orders/" + result._id
-//             }
-//         });
-        
-//     })
-//     .catch(err => {
-//         console.log(err);
-//         res.status(500).json({
-//             error: err
-//         });
-//     });
-// });
-
 router.post("/cart", async (req, res) => {
     Coffee.findById(req.body.coffeeId)
     const { coffeeId, quantity } = req.body
 
-    const userId = await User.findById(req.session.userId);
+    const foundUser = await User.findById(req.session.foundUser);
 
     try {
-        let cart = await Order.findOne({ userId });
+        let cart = await Order.findOne({ foundUser });
 
         if (cart) {
             let itemIndex = cart.coffee.findIndex(c => c.coffeeId == coffeeId);
@@ -94,10 +59,12 @@ router.post("/cart", async (req, res) => {
         } else {
             const newCart = await new Order({
                 _id: mongoose.Types.ObjectId(),
-                userId,
+                foundUser,
                 coffee: [{ coffeeId }],
                 quantity: quantity
             });
+            console.log(foundUser);
+            
             return res.status(201).send(newCart);
         }
     } catch(err) {
