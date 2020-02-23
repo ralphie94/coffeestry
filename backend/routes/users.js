@@ -59,7 +59,8 @@ router.post("/login", async (req, res) => {
         const foundUser = await User.findOne({username: req.body.username})
         if(foundUser.validPassword(req.body.password)){
             req.session.userId = foundUser._id;
-
+            console.log(req.session.userId);
+            
             res.json({
                 status: 200,
                 user: foundUser,
