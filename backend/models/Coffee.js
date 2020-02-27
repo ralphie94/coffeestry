@@ -5,8 +5,7 @@ const CoffeeSchema = new mongoose.Schema({
     name: { type: String, required: true },
     description: { type: String, required: true },
     price: { type: Number, required: true },
-    coffeeImage: { type: String, required: true },
-    coffeeId: Number
+    coffeeImage: { type: String, required: true }
 });
 
 const Coffee = mongoose.model("Coffee", CoffeeSchema);

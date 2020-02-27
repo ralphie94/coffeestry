@@ -6,10 +6,10 @@ import "./Cart.css";
 
 const Coffee = props => (
     <ul>
-      <li><h3>{props.coffee.coffee[0].name}</h3></li>
+      {/* <li><h3>{props.coffee.coffee[0].name}</h3></li>
       <li><Link to={"/coffee/"+props.coffee.coffee._id}><img className="coffee" src={`http://localhost:5000/${props.coffee.coffee[0].coffeeImage}`} alt="" /></Link></li>
       <li><p>${props.coffee.coffee[0].price}</p></li>
-      <li><a href="#" onClick={() => { props.removeCoffee(props.coffee.coffee[0]._id) }}>Delete</a></li>
+      <li><a href="#" onClick={() => { props.removeCoffee(props.coffee.coffee[0]._id) }}>Delete</a></li> */}
     </ul>
 )
 

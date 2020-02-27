@@ -63,33 +63,34 @@ router.get("/:orderId", (req, res, next) => {
 router.post("/cart", async (req, res) => {
     const { coffeeId, quantity } = req.body
 
-    try {
-        // await Coffee.findById(req.body.coffeeId)
-        const foundUser = await User.findById(req.session.userId);
-        let cart = await Order.findOne({ foundUser });
+    await Coffee.findById(req.body.coffeeId)
+    const foundUser = await User.findById(req.session.userId);
 
-        if (cart) {
-            // cart exists for user
-            let itemIndex = cart.coffee.findIndex(c => c.coffeeId == coffeeId);
+    try {
+        let order = await Order.findOne({ foundUser });
+
+        if (order) {
+            // order exists for user
+            let itemIndex = order.coffee.findIndex(c => c.coffeeId == coffeeId);
 
             if (itemIndex > -1) {
-                // coffee exists in the cart, update the quantity
-                let coffeeItem = cart.coffee[itemIndex];
+                // coffee exists in the order, update the quantity
+                let coffeeItem = order.coffee[itemIndex];
                 coffeeItem.quantity = quantity;
-                cart.coffee[itemIndex] = coffeeItem;
+                order.coffee[itemIndex] = coffeeItem;
             } else {
-                // coffee does not exist in cart, add new item
-                cart.coffee.push({ coffeeId });
+                // coffee does not exist in order, add new item
+                order.coffee.push({ coffeeId, quantity });
             }
-            cart = await cart.save();
+            order = await order.save();
             console.log(foundUser);
-            return res.status(201).send(cart);
+            return res.status(201).send(order);
         } else {
             // no cart for user, create new cart
             const newCart = await Order.create({
                 _id: mongoose.Types.ObjectId(),
                 foundUser,
-                coffee: coffeeId,
+                coffee: [{ coffeeId }],
                 quantity: quantity
             });
             console.log(foundUser);
