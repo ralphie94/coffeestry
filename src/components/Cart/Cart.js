@@ -24,7 +24,7 @@ class Cart extends Component {
     };
 }
 
-componentDidMount() {
+componentDidMount(id) {
     axios.get("http://localhost:5000/orders/")
         .then(coffee => {
             this.setState({ coffee: coffee.data.orders })
