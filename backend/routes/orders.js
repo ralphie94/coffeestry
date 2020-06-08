@@ -7,8 +7,8 @@ const Coffee = require("../models/Coffee");
 const User = require("../models/User");
 
 router.get("/", async (req, res, next) => {
-    let foundUser = await User.findById(req.session.userId);
-    Order.find({ foundUser })
+    let foundUser = "5e51bbfe25ee70fe7e13891b";
+    User.find( req.params.orderId )
       .select("coffee quantity _id")
       .populate('coffee', 'name price coffeeImage')
       .exec()
@@ -62,35 +62,31 @@ router.get("/:orderId", (req, res, next) => {
 });
 
 router.post("/cart", async (req, res) => {
-    const { coffeeId, quantity } = req.body
-
-    await Coffee.findById(req.body.coffeeId)
-    const foundUser = await User.findById(req.session.userId);
-
     try {
-        let cart = await Order.findOne({ foundUser });
+        await Coffee.findById(req.body.coffeeId)
+        const foundUser = await "5e51bbfe25ee70fe7e13891b";
+        // await Order.findOne({ foundUser });
 
-        if (cart < 0){
-        const order = await Order.create({
-            _id: mongoose.Types.ObjectId(),
-            foundUser,
-            coffee: coffeeId,
-            quantity: quantity
-        });
-            // coffee does not exist in cart, add new item
-            cart.userCart.push(order);
-            cart.save();
-            console.log(foundUser);
-            return res.status(201).send(cart);
-        } else {
-            const newCart = await new Order({
-                _id: mongoose.Types.ObjectId(),
-                foundUser,
-                coffee: coffeeId,
-                quantity: quantity
-            });
-            return res.status(201).send(newCart);
-        }
+        const order = new Order ({
+            _id : mongoose.Types.ObjectId(),
+            coffee: req.body.coffee,
+            quantity: req.body.quantity,
+            foundUser
+        })
+
+        User.findByIdAndUpdate(
+            {_id: "5e51bbfe25ee70fe7e13891b"},
+            {
+                $push:
+                {
+                    userCart: order
+                }
+            }
+        )
+        
+        return res.status(201).send(order);
+        
+        
     } catch(err) {
         console.log(err);
         res.status(500).send("Something went wrong");

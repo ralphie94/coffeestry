@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
 const User = require("../models/User");
+const Coffee = require("../models/Coffee");
+const Order = require("../models/Order");
 
 router.get("/", async (req, res) => {
     try {
