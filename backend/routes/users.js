@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const { getToken, isAuth } = require("../util");
 
 const User = require("../models/User");
 const Coffee = require("../models/Coffee");
@@ -42,7 +43,8 @@ router.post("/", (req, res, next) => {
             .then(result => {
                 console.log(result);
                 res.status(201).json({
-                    message: "User created"
+                    message: "User created",
+                    token: getToken(user)
                 });
             })
             .catch(err => {
@@ -67,7 +69,8 @@ router.post("/login", async (req, res) => {
                 status: 200,
                 user: foundUser,
                 success: foundUser ? true : false,
-                message: "Login Successful"
+                message: "Login Successful",
+                token: getToken(foundUser)
             })
         } else {
             req.session.message = "The login information does not match our records. Please try again."

@@ -1,14 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
+const { isAuth, isAdmin } = require("../util");
 
 const Order = require("../models/Order");
 const Coffee = require("../models/Coffee");
 const User = require("../models/User");
 
-router.get("/", async (req, res, next) => {
-    let foundUser = "5e51bbfe25ee70fe7e13891b";
-    User.find( req.params.orderId )
+router.get("/", (req, res, next) => {
+    Order.find()
       .select("coffee quantity _id")
       .populate('coffee', 'name price coffeeImage')
       .exec()
@@ -20,7 +20,6 @@ router.get("/", async (req, res, next) => {
               _id: doc._id,
               coffee: doc.coffee,
               quantity: doc.quantity,
-              foundUser,
               request: {
                 type: "GET",
                 url: "http://localhost:5000/orders/" + doc._id
@@ -28,7 +27,6 @@ router.get("/", async (req, res, next) => {
             };
           })
         });
-        console.log(foundUser);
       })
       .catch(err => {
         res.status(500).json({
@@ -38,7 +36,7 @@ router.get("/", async (req, res, next) => {
   });
 
 router.get("/:orderId", (req, res, next) => {
-    Order.findById(req.params.orderId)
+    Order.findById()
         .exec()
         .then(order => {
             if (!order) {
@@ -61,36 +59,38 @@ router.get("/:orderId", (req, res, next) => {
         });
 });
 
-router.post("/cart", async (req, res) => {
-    try {
-        await Coffee.findById(req.body.coffeeId)
-        const foundUser = await "5e51bbfe25ee70fe7e13891b";
-        // await Order.findOne({ foundUser });
+router.post("/cart", (req, res, next) => {
+    Coffee.findById(req.body.coffeeId)
+    const order = new Order({
+        _id: mongoose.Types.ObjectId(),
+        quantity: req.body.quantity,
+        coffee: req.body.coffeeId
+    });
 
-        const order = new Order ({
-            _id : mongoose.Types.ObjectId(),
-            coffee: req.body.coffee,
-            quantity: req.body.quantity,
-            foundUser
-        })
+    return order.save()
 
-        User.findByIdAndUpdate(
-            {_id: "5e51bbfe25ee70fe7e13891b"},
-            {
-                $push:
-                {
-                    userCart: order
-                }
+    .then(result => {
+        console.log(result);
+        res.status(201).json({
+            message: "Order stored",
+            createdOrder: {
+                _id: result._id,
+                coffee: result.coffee,
+                quantity: result.quantity
+            },
+            request: {
+                type: "GET",
+                url: "http://localhost:5000/orders/" + result._id
             }
-        )
-        
-        return res.status(201).send(order);
-        
-        
-    } catch(err) {
+        });
+
+    })
+    .catch(err => {
         console.log(err);
-        res.status(500).send("Something went wrong");
-    }
+        res.status(500).json({
+            error: err
+        });
+    });
 });
 
 router.delete("/:orderId", (req, res, next) => {
