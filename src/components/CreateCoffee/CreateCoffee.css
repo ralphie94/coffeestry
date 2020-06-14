@@ -1,103 +1,69 @@
 .name-field {
-    position: absolute;
     width: 592px;
     height: 50px;
-    left: 428px;
-    top: 410px;
     background: #FFFFFF;
     border: 1px solid #000000;
 }
 
 .image-field {
-    position: absolute;
-    width: 592px;
-    height: 50px;
-    left: 429px;
-    top: 521px;
+
 }
 
 .desc-field {
-    position: absolute;
     width: 592px;
     height: 50px;
-    left: 429px;
-    top: 630px;
     background: #FFFFFF;
     border: 1px solid #000000;
 }
 
 .price-field {
-    position: absolute;
     width: 592px;
     height: 50px;
-    left: 429px;
-    top: 750px;
     background: #FFFFFF;
     border: 1px solid #000000;
 }
 
 .create-name {
-    position: absolute;
-    width: 70px;
-    height: 28px;
-    left: 429px;
-    top: 361px;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     font-size: 24px;
-    line-height: 28px;
     color: #000000;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 .create-pic {
-    position: absolute;
-    width: 127px;
-    height: 28px;
-    left: 428px;
-    top: 476px;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     font-size: 24px;
-    line-height: 28px;
     color: #000000;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 .create-desc {
-    position: absolute;
-    width: 127px;
-    height: 28px;
-    left: 428px;
-    top: 587px;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     font-size: 24px;
-    line-height: 28px;
     color: #000000;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 .create-price {
-    position: absolute;
-    width: 127px;
-    height: 28px;
-    left: 428px;
-    top: 699px;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     font-size: 24px;
-    line-height: 28px;
     color: #000000;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 .create-title {
-    position: absolute;
-    width: 103px;
-    height: 42px;
-    left: 668px;
-    top: 250px;
     font-family: Raleway;
     font-style: normal;
     font-weight: normal;
@@ -105,9 +71,14 @@
 }
 
 .create-btn {
-    position: absolute;
     width: 103px;
     height: 42px;
-    left: 665px;
-    top: 870px;
+    margin-top: 2rem;
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+.create-btn-container {
+    display: flex;
+    justify-content: center;
 }

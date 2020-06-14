@@ -53,14 +53,16 @@ class Login extends Component {
                 ? (<Redirect to={`/create`} />
                 ) : (currentUser ? <Redirect to={`/`} />
                 : <form onSubmit={this.handleSubmit}>
-                <h1 className="login-title">Login</h1>
-                    <h3 className="error-msg">{message}</h3>
-                    <h2 className="login-name">Username</h2>
-                    <input type="text" className="name-box" name="username" autoComplete="off" value={username} onChange={this.handleChange} />
-                    <h2 className="login-password">Password</h2>
-                    <input type="password" className="password-box" name="password" value={password} onChange={this.handleChange} /><br/>
-                    <button type="submit" className="login-btn" value="Submit">SIGN IN</button>
-                    <p className="register-link"><a href="/register">Don't have an account yet?</a></p>
+                    <div className="login-container">
+                        <h1 className="login-title">Login</h1>
+                        <h3 className="error-msg">{message}</h3>
+                        <h2 className="login-name">Username</h2>
+                        <input type="text" className="name-box" name="username" autoComplete="off" value={username} onChange={this.handleChange} />
+                        <h2 className="login-password">Password</h2>
+                        <input type="password" className="password-box" name="password" value={password} onChange={this.handleChange} /><br/>
+                        <button type="submit" className="login-btn" value="Submit">SIGN IN</button>
+                        <p className="register-link"><a href="/register">Don't have an account yet?</a></p>
+                    </div>
                 </form>
                 )}
             </div>

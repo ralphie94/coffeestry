@@ -1,94 +1,100 @@
 .email-box {
-    position: absolute;
     width: 592px;
     height: 50px;
-    left: 428px;
-    top: 582px;
     border: 1px solid #000000;
 }
 
 .name-register {
-    position: absolute;
     width: 592px;
     height: 50px;
-    left: 428px;
-    top: 334px;
+    background: #FFFFFF;
     border: 1px solid #000000;
+    margin-bottom: 1rem;
 }
 
 .password-register {
-    position: absolute;
     width: 592px;
     height: 50px;
-    left: 428px;
-    top: 457px;
+    background: #FFFFFF;
     border: 1px solid #000000;
+    margin-bottom: 1rem;
 }
 
 .register-btn {
-    position: absolute;
     width: 216px;
     height: 74px;
-    left: 612px;
-    top: 680px;
     background: #104E3B;
     border: 1px solid #000000;
-    color: #FFFFFF;
     font-size: 24px;
+    color: #FFFFFF;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .register-title {
-    position: absolute;
-    width: 163px;
-    height: 42px;
-    left: 655px;
-    top: 219px;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     font-size: 36px;
-    line-height: 42px;
     color: #000000;
 }
 
 .username {
-    position: absolute;
-    width: 137px;
-    height: 28px;
-    left: 428px;
-    top: 281px;
+    margin-top: 2rem;
+    margin-right: 31rem;
+    margin-bottom: 1rem;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     font-size: 24px;
-    line-height: 28px;
     color: #000000;
 }
 
 .password {
-    position: absolute;
-    width: 131px;
-    height: 28px;
-    left: 428px;
-    top: 409px;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     font-size: 24px;
-    line-height: 28px;
     color: #000000;
+    margin-bottom: 1rem;
+    margin-right: 31rem;
 }
 
 .email {
-    position: absolute;
-    width: 70px;
-    height: 28px;
-    left: 428px;
-    top: 532px;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     font-size: 24px;
-    line-height: 28px;
     color: #000000;
+    margin-bottom: 1rem;
+    margin-right: 33rem;
+}
+
+@media (max-width: 768px) {
+    .name-register {
+        width: 350px;
+        height: 50px;
+    }
+
+    .password-register {
+        width: 350px;
+        height: 50px;
+    }
+
+    .email-box {
+        width: 350px;
+        height: 50px;
+    }
+
+    .username {
+        margin-right: 16rem;
+    }
+
+    .password {
+        margin-right: 16rem;
+    }
+
+    .email {
+        margin-right: 18rem;
+    }
 }

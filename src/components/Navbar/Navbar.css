@@ -18,6 +18,10 @@
     width: 8em;
 }
 
+.nav-title:hover {
+    opacity: 0.9;
+}
+
 .toolbar_navigation-items {
     margin-right: 0.5rem;
 }

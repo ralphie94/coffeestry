@@ -71,7 +71,7 @@ class CreateCoffee extends Component {
 
     render() {
         return (
-            <div>
+            <div className="login-container">
                 <h1 className="create-title">Create Coffee</h1>
                 <form onSubmit={this.onSubmit} enctype="multipart/form-data">
                     <h2 className="create-name">Name</h2>
@@ -106,7 +106,7 @@ class CreateCoffee extends Component {
                         value={this.state.price}
                         onChange={this.onChangePrice}
                     />
-                    <div>
+                    <div className="create-btn-container">
                         <input className="create-btn" type="submit" value="Create Coffee" />
                     </div>
                 </form>

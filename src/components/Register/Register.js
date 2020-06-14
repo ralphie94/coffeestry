@@ -54,15 +54,16 @@ class Register extends Component {
 const RegisterForm = ({changeHandler, handleSubmit, username, password, email}) =>
 <div>
 <form onSubmit={e => handleSubmit(e)}>
-    <h1 className="register-title">Register</h1>
-    <h2 className="username">Username</h2>
-    <input onChange={changeHandler} type="text" className="name-register" name="username" value={username}></input><br/>
-    <h2 className="password">Password</h2>
-    <input onChange={changeHandler} type="password" className="password-register" name="password" value={password}></input><br/>
-    <h2 className="email">Email</h2>
-    <input onChange={changeHandler} type="text" className="email-box" name="email" value={email}></input><br/>
-    <button type="submit" className="register-btn" value="Submit">CREATE</button>
-   
+    <div className="login-container">
+        <h1 className="register-title">Register</h1>
+        <h2 className="username">Username</h2>
+        <input onChange={changeHandler} type="text" className="name-register" name="username" value={username}></input><br/>
+        <h2 className="password">Password</h2>
+        <input onChange={changeHandler} type="password" className="password-register" name="password" value={password}></input><br/>
+        <h2 className="email">Email</h2>
+        <input onChange={changeHandler} type="text" className="email-box" name="email" value={email}></input><br/>
+        <button type="submit" className="register-btn" value="Submit">CREATE</button>
+    </div>
 </form>
 </div>
 

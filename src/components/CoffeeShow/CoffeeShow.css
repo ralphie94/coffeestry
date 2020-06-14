@@ -53,17 +53,25 @@
     .coffee-show {
         width: 200px;
         height: 200px;
+        margin-bottom: 4rem;
     }
 
-    .coffee-show-container {
+    .coffee-show-container ul {
+        flex-direction: column;
+        margin-top: 100px;
+    }
+
+    .coffee-info {
+        flex-direction: column;
+    }
+
+    .price-cart-btn {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-top: 50px;
     }
 
-    .coffee-name {
-        display: none;
+    .coffee-show-price {
+        margin-left: 2.5rem;
+        margin-bottom: 2rem;
     }
 }

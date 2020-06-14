@@ -8,7 +8,7 @@ import "./Cart.css";
 const Coffee = props => (
     <div className="cart-container">
         <ul>
-            <hr></hr>
+            <hr className="top-line"></hr>
             <div className="list-container">
                 <div className="img-name-price">
                     <div>
@@ -76,7 +76,7 @@ componentDidMount() {
                     {this.coffeeCartList() }
                     <hr className="bottom-line"></hr>
                     <div className="cart-buttons">
-                        <button className="continue-btn"> CONTINUE SHOPPING</button>
+                        <Link to="/"><button className="continue-btn"> CONTINUE SHOPPING</button></Link>
                         <button className="checkout-btn"> CHECKOUT</button>
                     </div>
                 </div>
