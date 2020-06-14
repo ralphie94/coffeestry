@@ -27,6 +27,8 @@
     justify-content: flex-end;
     position: relative;
     bottom: 75px;
+    right: 35px;
+    font-size: 20px;
 }
 
 .remove-btn {
@@ -39,6 +41,7 @@
     cursor: pointer;
     position: absolute;
     z-index: 1;
+    margin-top: 10px;
 }
 
 hr {
@@ -67,7 +70,7 @@ hr {
     top: 6rem;
 }
 
-h4 {
+.product-cart {
     position: absolute;
     width: 115px;
     height: 28px;
@@ -77,4 +80,79 @@ h4 {
     font-style: normal;
     font-weight: normal;
     font-size: 24px;
+}
+
+.total-cart {
+    position: absolute;
+    width: 75px;
+    height: 28px;
+    left: 1204px;
+    top: 373px;
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+}
+
+.quantity-cart {
+    position: absolute;
+    width: 122px;
+    height: 28px;
+    left: 950px;
+    top: 373px;
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+}
+
+.quantity-field {
+    width: 65px;
+    height: 39px;
+    margin-right: 13rem;
+    position: relative;
+    bottom: 80px;
+}
+
+.quan-price {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.continue-btn {
+    width: 209px;
+    height: 67px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 8rem;
+}
+
+.checkout-btn {
+    width: 180px;
+    height: 67px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    color: #FFFFFF;
+    background: #000000;
+    cursor: pointer;
+    margin-right: -9rem;
+}
+
+.cart-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: 20rem;
+    margin-top: 4rem;
+}
+
+.bottom-line {
+    position: relative;
+    left: 10rem;
 }

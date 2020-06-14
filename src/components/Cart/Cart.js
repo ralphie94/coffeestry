@@ -19,7 +19,10 @@ const Coffee = props => (
                         <li><button className="remove-btn" onClick={() => { props.removeCoffee(props.coffee._id) }}>REMOVE</button></li>
                     </div>
                 </div>
-                <li><p className="cart-price">${props.coffee.coffee.price}</p></li>
+                <div className="quan-price">
+                    <li><input type="text" className="quantity-field" name="quantity"></input></li>
+                    <li><p className="cart-price">${props.coffee.coffee.price}</p></li>
+                </div>
             </div>
         </ul>
     </div>
@@ -67,8 +70,15 @@ componentDidMount() {
                 {this.state.coffee && this.props.currentUser ? 
                 <div>
                     <h1 className="user-cart-title">YOUR CART</h1>
-                    <h4>PRODUCT</h4>
+                    <h4 className="product-cart">PRODUCT</h4>
+                    <h4 className="quantity-cart">QUANTITY</h4>
+                    <h4 className="total-cart">TOTAL</h4>
                     {this.coffeeCartList() }
+                    <hr className="bottom-line"></hr>
+                    <div className="cart-buttons">
+                        <button className="continue-btn"> CONTINUE SHOPPING</button>
+                        <button className="checkout-btn"> CHECKOUT</button>
+                    </div>
                 </div>
                  :
                 <div>
