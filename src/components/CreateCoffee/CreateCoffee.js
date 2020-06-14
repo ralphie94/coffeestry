@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+import "./CreateCoffee.css";
+
 class CreateCoffee extends Component {
     constructor(props) {
         super(props);
@@ -70,38 +72,42 @@ class CreateCoffee extends Component {
     render() {
         return (
             <div>
-                <h1>Create a new coffee</h1>
+                <h1 className="create-title">Create Coffee</h1>
                 <form onSubmit={this.onSubmit} enctype="multipart/form-data">
-                    <label>Name: </label>
+                    <h2 className="create-name">Name</h2>
                     <input 
+                        className="name-field"
                         type="text"
                         required
                         value={this.state.name}
                         onChange={this.onChangeName}
                     />
-                    <label>Picture: </label>
+                    <h2 className="create-pic">Picture</h2>
                     <input
+                        className="image-field"
                         type="file"
                         required
                         name="coffeeImage"
                         onChange={this.onChangeFile}
                     />
-                    <label>Description: </label>
+                    <h2 className="create-desc">Description</h2>
                     <input 
+                        className="desc-field"
                         type="text"
                         required
                         value={this.state.description}
                         onChange={this.onChangeDescription}
                     />
-                    <label>Price: </label>
+                    <h2 className="create-price">Price</h2>
                     <input 
+                        className="price-field"
                         type="text"
                         required
                         value={this.state.price}
                         onChange={this.onChangePrice}
                     />
                     <div>
-                        <input type="submit" value="Create Coffee" />
+                        <input className="create-btn" type="submit" value="Create Coffee" />
                     </div>
                 </form>
             </div>

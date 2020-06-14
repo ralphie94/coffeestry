@@ -156,3 +156,11 @@ hr {
     position: relative;
     left: 10rem;
 }
+
+.your-cart-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10rem;
+}

@@ -8,9 +8,32 @@
     margin-top: 5rem;
 }
 
+.main-coffee {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-coffee-name {
+    font-family: "Raleway", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.main-price {
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+}
+
 .coffee {
-    width: 175px;
-    height: 175px;
+    width: 200px;
+    height: 266px;
 }
 
 ul {
