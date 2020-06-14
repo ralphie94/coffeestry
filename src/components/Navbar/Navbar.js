@@ -21,9 +21,7 @@ class Navbar extends Component {
                                 !this.props.currentUser && <li><Link className="link" to="/login">Login</Link></li>
                             }
                             <li><Link className="link" to="/create">Create New Coffee</Link></li>
-                            {
-                                this.props.currentUser && <li><Link className="link" to={`/cart/${this.props.currentUser._id}`}>Cart</Link></li>
-                            }
+                            <li><Link className="link" to="/cart">Cart</Link></li>
                         </ul>
                     </div>
                     <div className="toolbar__toggle-button">

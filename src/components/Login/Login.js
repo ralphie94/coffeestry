@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 
+import "./Login.css";
+
 class Login extends Component {
 
     state = {
@@ -26,6 +28,7 @@ class Login extends Component {
             this.setState({
                 logged: true
             })
+            
         } else {
             console.log("HIT ELSE")
             this.setState({
@@ -44,17 +47,20 @@ class Login extends Component {
         const { username, password, message } = this.state
         const { currentUser } = this.props
         return(
-            <div>
+            <div className="login-background">
                 {
                 currentUser && currentUser.isAdmin
                 ? (<Redirect to={`/create`} />
                 ) : (currentUser ? <Redirect to={`/`} />
                 : <form onSubmit={this.handleSubmit}>
-                <h1>Login</h1>
-                    <h3>{message}</h3>
-                    <input type="text" name="username" placeholder="Username" autoComplete="off" value={username} onChange={this.handleChange} />
-                    <input type="password" name="password" placeholder="Password" value={password} onChange={this.handleChange} /><br/>
-                    <button type="submit" value="Submit">Login</button>
+                <h1 className="login-title">Login</h1>
+                    <h3 className="error-msg">{message}</h3>
+                    <h2 className="login-name">Username</h2>
+                    <input type="text" className="name-box" name="username" autoComplete="off" value={username} onChange={this.handleChange} />
+                    <h2 className="login-password">Password</h2>
+                    <input type="password" className="password-box" name="password" value={password} onChange={this.handleChange} /><br/>
+                    <button type="submit" className="login-btn" value="Submit">SIGN IN</button>
+                    <p className="register-link"><a href="/register">Don't have an account yet?</a></p>
                 </form>
                 )}
             </div>

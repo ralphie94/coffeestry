@@ -1,0 +1,122 @@
+.login-title {
+    position: absolute;
+    width: 103px;
+    height: 42px;
+    left: 668px;
+    top: 291px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 42px;
+}
+
+.name-box {
+    position: absolute;
+    width: 592px;
+    height: 50px;
+    left: 428px;
+    top: 410px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+}
+
+.password-box {
+    position: absolute;
+    width: 592px;
+    height: 50px;
+    left: 429px;
+    top: 521px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+}
+
+.login-btn {
+    position: absolute;
+    width: 216px;
+    height: 74px;
+    left: 612px;
+    top: 613px;
+    background: #104E3B;
+    border: 1px solid #000000;
+    font-size: 24px;
+    color: #FFFFFF;
+}
+
+.register-link {
+    position: absolute;
+    width: 185px;
+    height: 21px;
+    left: 635px;
+    top: 725px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:hover {
+    color: rgba(109, 105, 105, 0.781);
+}
+
+.error-msg {
+    position: absolute;
+    width: 103px;
+    height: 42px;
+    left: 668px;
+    top: 345px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 42px;
+}
+
+.login-name {
+    position: absolute;
+    width: 70px;
+    height: 28px;
+    left: 429px;
+    top: 361px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+}
+
+.login-password {
+    position: absolute;
+    width: 127px;
+    height: 28px;
+    left: 428px;
+    top: 476px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+}
+
+/* .login-background {
+    position: relative;
+    max-width: 100%;
+    height: 100%;
+    left: 0px;
+    background: url("../../images/coffee-cup.jpg");
+} */
+
+input[type="text"] {
+    font-size: 24px;
+    text-indent: 10px;
+}
+
+input[type="password"] {
+    font-size: 24px;
+    text-indent: 10px;
+}

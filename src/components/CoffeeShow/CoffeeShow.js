@@ -8,6 +8,8 @@ class CoffeeShow extends Component {
     constructor(props) {
         super(props);
 
+        this.onSubmit = this.onSubmit.bind(this);
+
         this.state = {
             coffee: {}
         };
@@ -23,16 +25,19 @@ class CoffeeShow extends Component {
             })
     }
 
-    async addCoffee(){
-
+    onSubmit(e){
+        e.preventDefault();
         const order = {
-            coffee: this.state.coffee._id
+            coffeeId: this.state.coffee._id
         }
 
-        let res = await axios.post("http://localhost:5000/orders/cart", order)
-        .then(res => console.log(res.data));
+        console.log(order);
+        
 
-        this.props.history.push(`/cart/${this.props.currentUser._id}`);
+        axios.post("http://localhost:5000/orders/cart", order)
+            .then(res => console.log(res.data));
+
+        this.props.history.push("/cart")
     }
 
     render() {
@@ -44,7 +49,7 @@ class CoffeeShow extends Component {
                             <li><h1 className="coffee-name">{this.state.coffee.name}</h1></li>
                             <li><p>{this.state.coffee.description}</p></li>
                             <li>${this.state.coffee.price}</li>
-                            <button value="Submit" onClick={() => {this.addCoffee(this.state.coffee)}}>Add to cart</button>
+                            <button onClick={this.onSubmit}>Add to cart</button>
                         </div>
                     </ul>
             </div>

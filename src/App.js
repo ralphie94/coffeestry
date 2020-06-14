@@ -16,7 +16,7 @@ import "./App.css";
 class App extends Component {
   state = {
     currentUser: null,
-    sideDrawerOpen: false
+    sideDrawerOpen: false,
   };
 
   doSetCurrentUser = user =>
@@ -49,7 +49,7 @@ class App extends Component {
           <div className="container">
             <Route path="/" exact component={CoffeeList} />
             <Route path="/create" component={CreateCoffee} />
-            <Route path="/cart/:id" render={() => <Cart />} />
+            <Route path="/cart" render={() => <Cart currentUser={this.state.currentUser} />} />
             <Route path="/coffee/:id" render={() => (<CoffeeShow currentUser={this.state.currentUser} />)}/>
             <Route
               path='/login'

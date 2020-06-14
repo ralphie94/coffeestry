@@ -55,7 +55,7 @@ class CoffeeList extends Component {
         return (
             <div>
                 <Banner />
-                <h1>Coffee</h1>
+                <h1 className="selections">Selections</h1>
                 <div className="coffee-list">
                     { this.coffeeList() }
                 </div>

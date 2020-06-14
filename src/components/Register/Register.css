@@ -1,0 +1,94 @@
+.email-box {
+    position: absolute;
+    width: 592px;
+    height: 50px;
+    left: 428px;
+    top: 582px;
+    border: 1px solid #000000;
+}
+
+.name-register {
+    position: absolute;
+    width: 592px;
+    height: 50px;
+    left: 428px;
+    top: 334px;
+    border: 1px solid #000000;
+}
+
+.password-register {
+    position: absolute;
+    width: 592px;
+    height: 50px;
+    left: 428px;
+    top: 457px;
+    border: 1px solid #000000;
+}
+
+.register-btn {
+    position: absolute;
+    width: 216px;
+    height: 74px;
+    left: 612px;
+    top: 680px;
+    background: #104E3B;
+    border: 1px solid #000000;
+    color: #FFFFFF;
+    font-size: 24px;
+}
+
+.register-title {
+    position: absolute;
+    width: 163px;
+    height: 42px;
+    left: 655px;
+    top: 219px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 42px;
+    color: #000000;
+}
+
+.username {
+    position: absolute;
+    width: 137px;
+    height: 28px;
+    left: 428px;
+    top: 281px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+}
+
+.password {
+    position: absolute;
+    width: 131px;
+    height: 28px;
+    left: 428px;
+    top: 409px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+}
+
+.email {
+    position: absolute;
+    width: 70px;
+    height: 28px;
+    left: 428px;
+    top: 532px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+}

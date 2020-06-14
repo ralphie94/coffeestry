@@ -1,8 +1,80 @@
+.cart-coffee {
+    width: 106px;
+    height: 137px;
+    margin-left: 3rem;
+}
+
+.cart-coffee-name {
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+}
+
 .cart-container {
-    left: 0;
-    line-height: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: -8rem;
+}
+
+.list-container {
+    margin-top: 5rem;
+}
+
+.cart-price {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    bottom: 75px;
+}
+
+.remove-btn {
+    background: #000000;
+    width: 68px;
+    height: 30px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
     position: absolute;
+    z-index: 1;
+}
+
+hr {
+    width: 1137px;
+    border: 1px solid #000000;
+    margin-top: 13rem;
+}
+
+.img-name-price {
+    display: flex;
+    flex-direction: row;
+}
+
+.name-remove {
+    margin-left: 10rem;
+    margin-top: 2rem;
+}
+
+.user-cart-title {
+    position: relative;
     text-align: center;
-    top: 40%;
-    width: 100%;
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    top: 6rem;
+}
+
+h4 {
+    position: absolute;
+    width: 115px;
+    height: 28px;
+    left: 200px;
+    top: 373px;
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
 }

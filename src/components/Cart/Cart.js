@@ -1,16 +1,28 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import "./Cart.css";
 
 const Coffee = props => (
-    <ul>
-      {/* <li><h3>{props.coffee.coffee[0].name}</h3></li>
-      <li><Link to={"/coffee/"+props.coffee.coffee._id}><img className="coffee" src={`http://localhost:5000/${props.coffee.coffee[0].coffeeImage}`} alt="" /></Link></li>
-      <li><p>${props.coffee.coffee[0].price}</p></li>
-      <li><a href="#" onClick={() => { props.removeCoffee(props.coffee.coffee[0]._id) }}>Delete</a></li> */}
-    </ul>
+    <div className="cart-container">
+        <ul>
+            <hr></hr>
+            <div className="list-container">
+                <div className="img-name-price">
+                    <div>
+                        <li><Link to={"/coffee/"+props.coffee._id}><img className="cart-coffee" src={`http://localhost:5000/${props.coffee.coffee.coffeeImage}`} alt="" /></Link></li>
+                    </div>
+                    <div className="name-remove">
+                        <li><h3 className="cart-coffee-name">{props.coffee.coffee.name}</h3></li>
+                        <li><button className="remove-btn" onClick={() => { props.removeCoffee(props.coffee._id) }}>REMOVE</button></li>
+                    </div>
+                </div>
+                <li><p className="cart-price">${props.coffee.coffee.price}</p></li>
+            </div>
+        </ul>
+    </div>
 )
 
 class Cart extends Component {
@@ -24,7 +36,7 @@ class Cart extends Component {
     };
 }
 
-componentDidMount(id) {
+componentDidMount() {
     axios.get("http://localhost:5000/orders/")
         .then(coffee => {
             this.setState({ coffee: coffee.data.orders })
@@ -51,10 +63,14 @@ componentDidMount(id) {
 
     render() {
         return(
-            <div className="cart-container">
-                {this.state.coffee ? (
-                    this.coffeeCartList() 
-                ) :
+            <div>
+                {this.state.coffee && this.props.currentUser ? 
+                <div>
+                    <h1 className="user-cart-title">YOUR CART</h1>
+                    <h4>PRODUCT</h4>
+                    {this.coffeeCartList() }
+                </div>
+                 :
                 <div>
                     <h1>Your cart</h1>
                     <p>Your cart is currently empty. Go buy some coffee!</p>
