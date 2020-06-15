@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 
 import "./Banner.css";
-import Image from "../../images/coffee-pour.jpeg";
 
 class Banner extends Component {
     render() {

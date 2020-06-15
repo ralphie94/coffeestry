@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
 
 import "./CoffeeShow.css";
 
 class CoffeeShow extends Component {
     constructor(props) {
         super(props);
+
+        this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             coffee: {}
@@ -22,39 +25,38 @@ class CoffeeShow extends Component {
             })
     }
 
-    onSubmit = (e) => {
+    onSubmit(e){
         e.preventDefault();
-
-        const coffee = {
-            name: this.state.name,
-            coffeeImage: this.state.coffeeImage,
-            description: this.state.description,
-            price: this.state.price
+        const order = {
+            coffeeId: this.state.coffee._id
         }
 
-        axios.post(`http://localhost:5000/coffee/${this.props.match.params.id}`, coffee)
-            .then(res => console.log(res.data));  
+        console.log(order);
+        
 
-        window.location = "/cart";
+        axios.post("http://localhost:5000/orders/cart", order)
+            .then(res => console.log(res.data));
+
+        this.props.history.push("/cart")
     }
 
     render() {
-        return (
+        return (   
             <div className="coffee-show-container">
-                <form onSubmit={this.onSubmit}>
                     <ul>
                         <li><img className="coffee-show" src={`http://localhost:5000/${this.state.coffee.coffeeImage}`} alt="" /></li>
                         <div className="coffee-info">
                             <li><h1 className="coffee-name">{this.state.coffee.name}</h1></li>
+                            <div className="price-cart-btn">
+                                <li><p className="coffee-show-price">${this.state.coffee.price}</p></li>
+                                <button className="add-to-cart" onClick={this.onSubmit}>ADD TO CART</button>
+                            </div>
                             <li><p>{this.state.coffee.description}</p></li>
-                            <li>${this.state.coffee.price}</li>
-                            <input type="submit" value="Add to cart" />
                         </div>
                     </ul>
-                </form>
             </div>
         )
     }
 };
 
-export default CoffeeShow;
+export default withRouter(CoffeeShow);

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 
+import "./Register.css";
+
 class Register extends Component {
   state = {
     username: '',
@@ -48,14 +50,14 @@ class Register extends Component {
         {this.state.logged ? (
           <Redirect to={`/`} />
         ) : (
-          <RegisterForm
-            changeHandler={this.changeHandler}
-            handleSubmit={this.handleSubmit}
-            username={username}
-            password={password}
-            email={email}
-          />
-        )}
+            <RegisterForm
+              changeHandler={this.changeHandler}
+              handleSubmit={this.handleSubmit}
+              username={username}
+              password={password}
+              email={email}
+            />
+          )}
       </div>
     );
   }
@@ -67,38 +69,38 @@ const RegisterForm = ({
   password,
   email,
 }) => (
-  <div>
-    <form onSubmit={e => handleSubmit(e)}>
-      <h1>Register</h1>
-      <input
-        onChange={changeHandler}
-        type='text'
-        name='username'
-        placeholder='Username'
-        value={username}
-      ></input>
-      <br />
-      <input
-        onChange={changeHandler}
-        type='password'
-        name='password'
-        placeholder='Password'
-        value={password}
-      ></input>
-      <br />
-      <input
-        onChange={changeHandler}
-        type='text'
-        name='email'
-        placeholder='Email'
-        value={email}
-      ></input>
-      <br />
-      <button type='submit' value='Submit'>
-        Submit
+    <div>
+      <form onSubmit={e => handleSubmit(e)}>
+        <h1>Register</h1>
+        <input
+          onChange={changeHandler}
+          type='text'
+          name='username'
+          placeholder='Username'
+          value={username}
+        ></input>
+        <br />
+        <input
+          onChange={changeHandler}
+          type='password'
+          name='password'
+          placeholder='Password'
+          value={password}
+        ></input>
+        <br />
+        <input
+          onChange={changeHandler}
+          type='text'
+          name='email'
+          placeholder='Email'
+          value={email}
+        ></input>
+        <br />
+        <button type='submit' value='Submit'>
+          Submit
       </button>
-    </form>
-  </div>
-);
+      </form>
+    </div>
+  );
 
 export default Register;

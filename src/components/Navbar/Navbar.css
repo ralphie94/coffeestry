@@ -2,7 +2,7 @@
     width: 100%;
     top: 0;
     left: 0;
-    background: #104e3b;
+    background: #000000;
     height: 140px;
 }
 
@@ -16,6 +16,10 @@
 
 .nav-title {
     width: 8em;
+}
+
+.nav-title:hover {
+    opacity: 0.9;
 }
 
 .toolbar_navigation-items {
@@ -40,7 +44,7 @@
 
 .toolbar_navigation-items .link:hover,
 .toolbar_navigation-items .link:active {
-    color: #fa923f;
+    color: #d48341;
 }
 
 @media (max-width: 768px) {

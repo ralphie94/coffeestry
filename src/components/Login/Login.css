@@ -1,0 +1,120 @@
+.login-title {
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6rem;
+}
+
+.name-box {
+    width: 592px;
+    height: 50px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    margin-bottom: 1rem;
+}
+
+.password-box {
+    width: 592px;
+    height: 50px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+}
+
+.login-btn {
+    width: 216px;
+    height: 74px;
+    background: #104E3B;
+    border: 1px solid #000000;
+    font-size: 24px;
+    color: #FFFFFF;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.register-link {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:hover {
+    color: rgba(109, 105, 105, 0.781);
+}
+
+.error-msg {
+    font-style: normal;
+    font-weight: normal;
+}
+
+.login-name {
+    margin-top: 2rem;
+    margin-right: 31rem;
+    margin-bottom: 1rem;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    color: #000000;
+}
+
+.login-password {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    color: #000000;
+    margin-bottom: 1rem;
+    margin-right: 31rem;
+}
+
+/* .login-background {
+    position: relative;
+    max-width: 100%;
+    height: 100%;
+    left: 0px;
+    background: url("../../images/coffee-cup.jpg");
+} */
+
+input[type="text"] {
+    font-size: 24px;
+    text-indent: 10px;
+}
+
+input[type=""] {
+    font-size: 24px;
+    text-indent: 10px;
+}
+
+@media (max-width: 768px) {
+    .name-box {
+        width: 350px;
+        height: 50px;
+    }
+
+    .password-box {
+        width: 350px;
+        height: 50px;
+    }
+
+    .login-name {
+        margin-right: 16rem;
+    }
+
+    .login-password {
+        margin-right: 16rem;
+    }
+}

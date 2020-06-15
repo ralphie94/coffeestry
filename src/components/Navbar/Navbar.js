@@ -12,12 +12,14 @@ class Navbar extends Component {
             <header className="toolbar">
                 <nav className="toolbar__navigation">
                     <div className="logo">
-                        <Link to="/"><img className="nav-title" src={Logo} /></Link>
+                        <Link to="/"><img className="nav-title" src={Logo} alt="" /></Link>
                     </div>
                     <div className="toolbar_navigation-items">
                         <ul className="nav-links">
                             <li><Link className="link" to="/">Home</Link></li>
-                            <li><Link className="link" to="/login">Login</Link></li>
+                            {
+                                !this.props.currentUser && <li><Link className="link" to="/login">Login</Link></li>
+                            }
                             <li><Link className="link" to="/create">Create New Coffee</Link></li>
                             <li><Link className="link" to="/cart">Cart</Link></li>
                         </ul>
