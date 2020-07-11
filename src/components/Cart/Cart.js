@@ -80,7 +80,7 @@ componentDidMount() {
                         <button className="checkout-btn"> CHECKOUT</button>
                     </div>
                 </div>
-                 :
+                :
                 <div className="your-cart-text">
                     <h1 style={{ fontSize: "48px", fontFamily: "Raleway" }}>YOUR CART</h1>
                     <p style={{ marginTop: "30px" }}>Your cart is currently empty. Go buy some coffee!</p>

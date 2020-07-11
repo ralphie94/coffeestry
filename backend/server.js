@@ -16,6 +16,10 @@ const ordersRouter = require("./routes/orders");
 const app = express();
 const port = process.env.PORT || 5000;
 
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("build"));
+}
+
 app.use(express.static(__dirname));
 app.use(cors());
 app.use(express.json());
