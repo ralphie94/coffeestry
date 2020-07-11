@@ -21,6 +21,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, "build")));
 app.use(cors());
 app.use(express.json());
 app.use("/uploads", express.static("uploads")); 
@@ -38,6 +39,10 @@ app.use(session({
 app.use("/users", usersRouter);
 app.use("/coffee", coffeeRouter);
 app.use("/orders", ordersRouter);
+
+app.get("/*", (req, res) => {
+    res.send(path.join(__dirname, "build", "index.html"));
+  })
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
