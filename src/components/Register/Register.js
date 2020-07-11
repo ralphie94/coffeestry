@@ -20,7 +20,7 @@ class Register extends Component {
 
     handleSubmit = (e) =>{
         e.preventDefault()
-        fetch ("http://coffeestry/users", {
+        fetch ("http://coffeestry:5000/users", {
             method: "POST",
             credentials: "include",
             body: JSON.stringify(this.state),
