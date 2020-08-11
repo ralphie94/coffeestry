@@ -20,7 +20,7 @@ class Register extends Component {
 
     handleSubmit = (e) =>{
         e.preventDefault()
-        fetch ("/users", {
+        fetch ("http://localhost:5000//users", {
             method: "POST",
             credentials: "include",
             body: JSON.stringify(this.state),
