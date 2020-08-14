@@ -66,8 +66,8 @@ componentDidMount() {
 
     render() {
         return(
-            <div>
-                {this.state.coffee && this.props.currentUser ? 
+            // <div>
+            //     {this.state.coffee && this.props.currentUser ? 
                 <div>
                     <h1 className="user-cart-title">YOUR CART</h1>
                     <h4 className="product-cart">PRODUCT</h4>
@@ -80,13 +80,13 @@ componentDidMount() {
                         <button className="checkout-btn"> CHECKOUT</button>
                     </div>
                 </div>
-                :
-                <div className="your-cart-text">
-                    <h1 style={{ fontSize: "48px", fontFamily: "Raleway" }}>YOUR CART</h1>
-                    <p style={{ marginTop: "30px" }}>Your cart is currently empty. Go buy some coffee!</p>
-                </div>
-                }
-            </div>
+                // :
+                // <div className="your-cart-text">
+                //     <h1 style={{ fontSize: "48px", fontFamily: "Raleway" }}>YOUR CART</h1>
+                //     <p style={{ marginTop: "30px" }}>Your cart is currently empty. Go buy some coffee!</p>
+                // </div>
+                // }
+            // </div>
         )
     }
 };
