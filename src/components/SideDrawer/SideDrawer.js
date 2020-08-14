@@ -16,9 +16,7 @@ const sideDrawer = props => {
                     !props.currentUser && <li><Link className="link" to="/login" onClick={props.click}>Login</Link></li>
                 }
                 <li><Link className="link" to="/create" onClick={props.click}>Create New Coffee</Link></li>
-                {
-                    props.currentUser && <li><Link className="link" to={`/cart/${props.currentUser._id}`} onClick={props.click}>Cart</Link></li>
-                }
+                <li><Link className="link" to="/cart" onClick={props.click}>Cart</Link></li>
             </ul>
         </nav>
     );
